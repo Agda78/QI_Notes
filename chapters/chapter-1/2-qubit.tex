@@ -1,0 +1,97 @@
+\section{Qubit e Notazioni}
+
+Un \textbf{Qubit} è il sistema quantistico più semplice, i cui stati possono essere descritti da uno spazio vettoriale complesso a due dimensioni. In generale, questo è dovuto al fatto che "la misurazione" starebbe nel capire in che verso sta spinnando l'elettrone in base ad una stessa "direzione". Ma questo è fuori dagli scopi del corso.
+
+\subsection{Notazione di Dirac}
+La \textbf{notazione di Dirac} (o \textbf{BraKet}) è un modo per simboleggiare i vettori che ci permette di "gestire" in maniera più coerente quello che è lo studio della computazione quantistica.
+Considerando \( c_1, c_2, \dots, c_n \in \mathbb{C}\), allora si definiscono le seguenti notazioni.
+Le notazioni di base sono quella della \textbf{Ket} (Vettore colonna):
+\[
+\ket{\varphi} =  
+\begin{bmatrix}
+c_1 \\
+c_2 \\
+\vdots \\
+c_n    
+\end{bmatrix}
+\]
+
+E della \textbf{Bra} (Vettore Riga), è il coniugato trasposto di \(\ket{\varphi}\):
+\[
+\bra{\varphi} = 
+\begin{bmatrix}
+c_1^* & c_2^* & \dots & c_n^*
+\end{bmatrix}
+\]
+
+Date le precedenti notazioni, sì definisce il \textbf{prodotto interno} come:
+\[
+\bra{x}\ket{y} = \braket{x | y}
+\]
+
+Mentre si definisce il \textbf{prodotto esterno} come:
+\[
+\ket{x}\bra{y}
+\]
+
+\subsection{Qubit}
+Nel caso del Qubit, essendo lo spazio di dimensione 2, si andrà a considerare quella che è la base canonica dello spazio, ovvero: \(\mathcal{B} = 
+\left\{
+\left[
+\begin{smallmatrix}
+1 \\
+0    
+\end{smallmatrix}
+\right]
+,
+\left[
+\begin{smallmatrix}
+0 \\
+1
+\end{smallmatrix}
+\right]
+\right\}
+\).
+Tale base può essere anche scritta seguendo la seguente notazione:
+\[
+\ket{0} = \begin{bmatrix}1 \\ 0\end{bmatrix} 
+\]
+\[
+\ket{1} = \begin{bmatrix}0 \\ 1\end{bmatrix}
+\]
+
+Pertanto possiamo scrivere la base del nostro spazio degli stati come:
+\[
+\mathcal{B} = \left\{ \ket{0}, \ket{1} \right\}
+\]
+
+Pertanto, uno stato quantistico può essere visto come la \textbf{superposizione} di stati, il cui risultato è un altro stato quantistico valido.
+Quindi, uno stato \(\ket{\varphi} \in \mathbb{C}^2\) del Qubit, può essere visto come:
+\[
+\ket{\varphi} = \alpha_0 \ket{0} + \alpha_1 \ket{1}
+\]
+
+Dove, \(|\alpha_0|^2\) è la probabilità di ottenere esito \(\ket{0}\) dalla misura sulla base precedentemente presentata; mentre \(|\alpha_1|^2\) è la probabilità di misurare lo stato \(\ket{1}\). Dalla teoria della probabilità, quindi:
+\[
+\alpha_0, \alpha_1 \in \mathbb{C} : |\alpha_0|^2 + |\alpha_1|^2 = 1
+\]
+La somma dei moduli delle possibilità all'interno di un sistema quantistico dev'essere 1.
+
+Altra base molto importante per la quantum computation è la \textbf{base di Hadamard}, ovvero:
+\[
+\mathcal{H} = \left\{ \ket{+},\ket{-}\right\}
+\]
+
+Dove sarà possibile esprimere la superposizione come:
+\[
+\ket{\varphi} = \beta_0 \ket{+} + \beta_1 \ket{-}
+\]
+
+Gli elementi della base di Hadamard possono essere espressi anche come elementi della base canonica, quindi è possibile andare a definire le seguenti relazioni:
+\[
+\ket{+} = \frac{1}{\sqrt{2}}\left(\ket{0} + \ket{1}\right)
+\]
+\[
+\ket{-} = \frac{1}{\sqrt{2}}\left(\ket{0} - \ket{1}\right)
+\]
+

@@ -1,0 +1,34 @@
+\documentclass[a4paper,12pt, openany]{extbook}
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+% ----------------------------------------------------------------------------------------
+% TITOLO
+% ----------------------------------------------------------------------------------------
+\title{
+    \includegraphics[width=0.4\textwidth]{fig/h_tagliato.png} \\
+    \vspace{1cm}
+    \Huge{Quantum Information} \\
+    \vspace{0.5cm} 
+    \Large{a.c. 2025/26}
+}
+\author{\textbf{Agostino D'Amora}} % Modifica con il tuo nome
+\date{}
+
+% ----------------------------------------------------------------------------------------
+\begin{document}
+
+
+\maketitle
+
+% TAVOLA DEI CONTENUTI
+\tableofcontents
+\newpage
+
+\include{chapters/Introduzione}
+
+\include{chapters/chapter-1/0-chapter-1}
+
+\printbibliography[heading=bibintoc, title={Bibliografia}]
+
+
+\end{document}

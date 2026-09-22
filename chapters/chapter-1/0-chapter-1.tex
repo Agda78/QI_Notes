@@ -1,0 +1,34 @@
+\chapter{Le basi del Quantum Computing}
+
+In tale capitolo sono presentate le ipotesi e le basi matematiche per affrontare quelli che sono i diversi argomenti che ci si troverà ad affrontare nei successivi capitoli
+
+\section{Il primo postulato}
+Il primo postulato della meccanica quantistica ci dice che: 
+
+Ad ogni \textbf{sistema fisico} è associato uno \textbf{Spazio di Hilbert} \(\mathcal{H}\). Lo \textbf{stato} di tale sistema fisico è descritto da un vettore \(\psi\) di \(\mathcal{H}\) di norma unitaria.
+Se due sistemi fisici, con spazi di Hilbert \(\mathcal{H}_1\) e \(\mathcal{H}_2\), vengono combinati in un unio sistema (facendoli interagire in qualche modo), lo spazio di Hilbert del sistema composto è dato dal prodotto tensoriale dei due spazi di Hilbert. \(\mathcal{H} \equiv \mathcal{H}_1 \otimes \mathcal{H}_2 \) \cite{giliberti2007limite}.
+
+Per un sistema quantistico, i termini \textbf{isolato} e \textbf{chiuso} possono essere accostati, quindi saranno utilizzati come sinonimi, ed il significato puro è quello di sistema che non è accoppiato con un ambiente esterno non controllato.
+
+Un sistema fisico quantistico è associato (come un sistema fisico) ad uno spazio di Hilbert, che sarà quindi chiamato spazio degli stati del sistema. Dato che parliamo (per ora) di sistemi isolati (non interagenti con un ambiente esterno non controllato), possiamo dire che il sistema è completamente descritto da un vettore di stato (per gli stati puri) con modulo unitario, a meno di una fase globale.
+Quindi due vettori a modulo unitario, con solo una fase globale di differenza, sono visti come lo stesso stato puro.
+
+\[
+\ket{\psi} = e^{j \gamma} \ket{\phi}, \gamma \in [0,2\pi)
+\]
+
+Dove, considerando \(\mathbb{C}^n\) uno spazio vettoriale complesso (i cui elementi sono colonne), dove n rappresenta il numero di valori complessi totali per rappresentare il sistema nella sua interezza, allora:
+\[
+\ket{\psi}, \ket{\phi} \in \mathbb{C}^n
+\]
+
+Solitamente gli stati Quantistici possono andare a rappresentare diverse tipologie di caratteristiche che si vogliono analizzare nel sistema. Ad esempio lo spin degli elettroni all'interno degli atomi (possono essere o verso l'alto o verso il basso una volta osservati), oppure la polarizzazione orizzontale o verticale dei protoni. 
+Il sistema più semplice in meccanica quantistia è il quantum bit (Qubit), dove lo spazio di stato è duo-dimensionale.
+
+\begin{warn}
+Il valore di n non deve essere confuso con il numero di Qubit. Dato che ogni Qubit sarà rappresentato da 2 valori complessi, la grandezza dello spazio sarà \(n=2^m\), dove \(m\) è il numero di Qubit del sistema.
+\end{warn}
+
+\input{chapters/chapter-1/1-spazio-hilbert.tex}
+
+\input{chapters/chapter-1/2-qubit.tex}
