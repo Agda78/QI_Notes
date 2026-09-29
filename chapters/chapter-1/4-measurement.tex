@@ -1,0 +1,62 @@
+\section{Misurazione di un Qubit}
+Finchè un qubit rimane in una sua superposizione, non vi è possibile accedere alle informazioni. Per farlo bisognerà "misurarlo". Il postulato che governa la misura di un qubit è il secondo postulato della meccanica quantistica. Tale postulato ci permette di dire che quando si va ad effettuare una misurazione su di un qubit è importante capire che tipo di misurazione si sta andando a fare. Se si misura andando a considerare quella che è la base canonica del circuito, allora il risultato sarà o \(\ket{0}\) o \(\ket{1}\). Non è possibile accedere all'informazione di \(\alpha\) o \(\beta\). Queste sono solo delle probabilità per cui il sistema potrà trovarsi in un autospazio o nell'altro. Se misurassimo con un dispositivo che fa riferimento, invece, alla base di Hadamard, allora i possibili risultati sarebbero \(\ket{+}\) e \(\ket{-}\). 
+
+Quindi lo stato di un qubit collassa sul uno dei vettori ortogonali di riferimento, utilizzati per la misura, con probabilità definite dai coefficenti del qubit stesso.
+Dopo la misurazione, il qubit collassato, non porterà ulteriore informazione rispetto al passato, quindi altre misurazioni, dopo la prima, daranno sempre lo stesso risultato. Il Qubit, quindi, "collasserà in un bit".
+
+La misura avviene lungo uno specifico operatore. Gli operatori sono le matrici di Pauli. Sì dice cos', poichè gli autovettori associati alle matrici di pauli, costituiranno la base in cui il qubit potrà collassare.
+
+Questo perchè ad ogni grandezza fisica osservabile, corrisponde un operatore autoaggiunto il cui spettro costituisce l'insieme dei possibili valori che potranno essere ottenuti dalla misura di tale grandezza.
+
+Questo per dire che la superposizione non solo dipende dalla base di interpretazione, ma anche dall'operatore su di cui si andrà ad effettuare la misurazione.
+
+Alcuni esempi di tali stati:
+\[
+\ket{\varphi} = 1 \ket{0} + 0 \ket{1}
+\]
+\[
+H = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\]
+\[
+H \ket{\varphi} = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1    
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
+= \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix}
+= \frac{1}{\sqrt{2}} (\ket{0} + \ket{1})
+\]
+
+Se noi misurassimo tale qubit sull'operatore \(Z\), quindi sulla base canonica, allora avremmo che esso potrà collassare con una probabilità del \(50 \%\), sia in \(\ket{0}\) sia in \(\ket{1}\). Mentre se lo misurassimo lungo l'operatore \(X\), quindi con la base di Hadamard, allora,  si otterrebbe direttamente lo stato \(\ket{+}\).
+
+Quindi la superposizione è dipendente dalla base, poichè, con la misurazione in alcune basi, si otterrebbe un risultato deterministico, mentre in altre si otterrebbe un risultato probabilistico (tale affermazione è alla base del funzionamento del sistema QKD).
+
+Quindi, generalizzando anche ai casi multi-qubit. Un sistema multi-qubit, quando misurato, può cadere in una delle sue \(2^n\) possibili vettori della base. Pertanto si formalizza quello che è il terzo postulato della meccanica quantistica:
+
+Data una base ortonormale dello spazio di Hilbert corrispondente al nostro sistema fisico quantistico. Ogni misurazione di base avrà \(d\) possibili uscite, corrispondenti ai vettori della base orto-normale. Se un sistema è nello stato \(\ket{\psi}\) e andiamo a misurarlo lungo la base ortonormale \(\{\ket{\psi_n}\}^d_{n=1}\), la probabilità che si otterrà come uscita il vettore \(n\) è data dalla legge di Born:
+\[
+p(n|\ket{\psi}) = |\braket{\psi_n | \psi}|^2
+\]
+
+Quindi la probabilità non è altro che il modulo quadro della proiezione del Qubit lungo il vettore della base n-esimo. 
+
+Dalla precedente regola, quindi, è possibile andare a definire la somma di tutti i possibili risultati della misurazione e si otterrà la seguente formula:
+\[
+\sum_{d}^{n=1}p(n | \ket{\psi}) = \sum_{d}^{n=1}|\braket{\psi_n | \psi}|^2 = \braket{\psi | \psi} = 1
+\]
+
+Questo dimostra anche che se ci fosse una fase globale, questa non modificherebbe in alcun modo le probabilità associate ai singoli vettori della base. Quindi anche se due stati diversi, hanno tutte le probaiblità uguali, allora essi saranno due stati che differiscono della sola fase globale.
+
+\subsection{L'esperimento di Dirac}

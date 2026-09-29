@@ -7,7 +7,7 @@ La \textbf{notazione di Dirac} (o \textbf{BraKet}) è un modo per simboleggiare 
 Considerando \( c_1, c_2, \dots, c_n \in \mathbb{C}\), allora si definiscono le seguenti notazioni.
 Le notazioni di base sono quella della \textbf{Ket} (Vettore colonna):
 \[
-\ket{\varphi} =  
+\ket{\gamma} =  
 \begin{bmatrix}
 c_1 \\
 c_2 \\
@@ -16,9 +16,9 @@ c_n
 \end{bmatrix}
 \]
 
-E della \textbf{Bra} (Vettore Riga), è il coniugato trasposto di \(\ket{\varphi}\):
+E della \textbf{Bra} (Vettore Riga), è il coniugato trasposto di \(\ket{\gamma}\):
 \[
-\bra{\varphi} = 
+\bra{\gamma} = 
 \begin{bmatrix}
 c_1^* & c_2^* & \dots & c_n^*
 \end{bmatrix}
@@ -66,9 +66,9 @@ Pertanto possiamo scrivere la base del nostro spazio degli stati come:
 \]
 
 Pertanto, uno stato quantistico può essere visto come la \textbf{superposizione} di stati, il cui risultato è un altro stato quantistico valido.
-Quindi, uno stato \(\ket{\varphi} \in \mathbb{C}^2\) del Qubit, può essere visto come:
+Quindi, uno stato \(\ket{\gamma} \in \mathbb{C}^2\) del Qubit, può essere visto come:
 \[
-\ket{\varphi} = \alpha_0 \ket{0} + \alpha_1 \ket{1}
+\ket{\gamma} = \alpha_0 \ket{0} + \alpha_1 \ket{1}
 \]
 
 Dove, \(|\alpha_0|^2\) è la probabilità di ottenere esito \(\ket{0}\) dalla misura sulla base precedentemente presentata; mentre \(|\alpha_1|^2\) è la probabilità di misurare lo stato \(\ket{1}\). Dalla teoria della probabilità, quindi:
@@ -84,7 +84,7 @@ Altra base molto importante per la quantum computation è la \textbf{base di Had
 
 Dove sarà possibile esprimere la superposizione come:
 \[
-\ket{\varphi} = \beta_0 \ket{+} + \beta_1 \ket{-}
+\ket{\gamma} = \beta_0 \ket{+} + \beta_1 \ket{-}
 \]
 
 Gli elementi della base di Hadamard possono essere espressi anche come elementi della base canonica, quindi è possibile andare a definire le seguenti relazioni:
@@ -93,5 +93,51 @@ Gli elementi della base di Hadamard possono essere espressi anche come elementi 
 \]
 \[
 \ket{-} = \frac{1}{\sqrt{2}}\left(\ket{0} - \ket{1}\right)
+\]
+
+\subsection{Sfera di Bloch}
+La \textbf{sfera di Bloch} è un modo per andare a rappresentare geometricamente gli stati di un qubit.
+Questo è possibile perchè, praticamente, i gradi di libertà id un qubit sono 3 e non 4 come si potrebbe immaginare.
+Quello che permette di poter avere tale considerazione sono i seguenti passaggi:
+\[
+\ket{\psi} = c_0 \ket{0} + c_1 \ket{1}
+\]
+
+Scrivendo \(c_0 = |c_0|e^{j\phi}\) e \(c_1 = |c_1|e^{j\gamma}\), si ottiene la seguente rappresentazione del qubit:
+\[
+\ket{\psi} = |c_0|e^{j\phi} \ket{0} + |c_1|e^{j\gamma} \ket{1}
+\]
+
+Guardando tale rappresentazione, si notano 4 valori reali, ma vi si è dimenticati della condizione di normalizzazione (\(|c_0|^2 + |c_1|^2 = 1\)), da tale condizione, allora, si può andare a definire che \(|c_0|=cos\left(\frac{\theta}{2}\right), |c_1| = sin\left(\frac{\theta}{2}\right)\). Andando a sostituire, quindi, si avrà:
+\[
+\ket{\psi} = cos\left(\frac{\theta}{2}\right) e^{j\phi} \ket{0} + sin\left(\frac{\theta}{2}\right) e^{j\gamma} \ket{1}
+\]
+
+Raccogliendo totalmente il fasore \(e^{j\phi}\), si otterà, quindi:
+\[
+\ket{\psi} = e^{j\phi}\left(cos\left(\frac{\theta}{2}\right) \ket{0} + sin\left(\frac{\theta}{2}\right) e^{j(\gamma-\phi)} \ket{1}\right)
+\]
+
+Andando a considerare l'indeterminazione tra gli stati puri (\(\ket{\psi} = e^{j\phi}\ket{\psi'}, \phi \in [0,2\pi]\)), allora la fase globale precendere può essere ignorata, andando a considerare solo la fase locale, dove, sostituendo con \(\varphi = \gamma - \phi\), si ottiene:
+\[
+\ket{\psi} = cos\left(\frac{\theta}{2}\right) \ket{0} + sin\left(\frac{\theta}{2}\right) e^{j\varphi} \ket{1}
+\]
+
+Da tale relazione, si comprende che \(\theta\) e \(\varphi\) sono due angoli per il posizionamento all'interno di uno spazio tridimensionale. Non si va a considerare il modulo dato che sarà sempre uguale ad 1 per gli stati puri. In tale sfera di stati, vi sono, lo stato \(\ket{0}\) che è posto nel lato positivo dell'asse \(z\), mentre \(\ket{1}\) è posizionato nella parte negativa dell'asse \(z\) [\ref{img:Bloch}].
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{fig/sfera_di_block.png}
+\caption{Sfera di Bloch}\label{img:Bloch}
+\end{figure}
+
+Da tali angoli, considerando il modulo negativo, è possibile ricavare la posizione in base alle coordinate x,y,z. 
+
+\[
+\begin{cases}
+x = sin(\theta)cos(\varphi) \\
+y = sin(\theta)sin(\varphi) \\
+z = cos(\theta)
+\end{cases}
 \]
 
