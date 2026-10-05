@@ -60,20 +60,100 @@ Dalla precedente regola, quindi, è possibile andare a definire la somma di tutt
 Questo dimostra anche che se ci fosse una fase globale, questa non modificherebbe in alcun modo le probabilità associate ai singoli vettori della base. Quindi anche se due stati diversi, hanno tutte le probaiblità uguali, allora essi saranno due stati che differiscono della sola fase globale.
 
 \subsection{L'esperimento di Dirac}
-L'unica particella visibile all'umo è il \textbf{fotone} che possiamo osservare in maniera diretta.
+La luce è costituita da \textbf{fotoni}, ed è l'unico tipo di particella a cui i nostri occhi sono sensibili.
 
-Un fotone viene valutato in base alla sua polarizzazione, tale polarizzazione viene valutata con un piano 2-d qualunque, posizionato perpendicolarmente al movimento del fotone. La scelta di cosa andare a vlutare è arbitraria, cosideriamo le polarizzazioni verticali \(\uparrow\) e polarizzazioni orizzontali \(\rightarrow\), abbiamo scelto la nostra base di valutazione.
+Un fotone viene caratterizzato dalla sua polarizzazione, che si valuta su un piano 2-d perpendicolare alla direzione di moto del fotone. La scelta della base di valutazione è arbitraria: consideriamo le polarizzazioni verticali \(\uparrow\) e orizzontali \(\rightarrow\), e abbiamo così scelto la nostra base.
 
 \begin{warn}
-La base di valutazione è quella che è stata scelta da noi, ma ciò non toglie che si potrebbe valutare tale polarizzazione anche utilizzando altre tipologie di basi ortonormali
+La base di valutazione è quella scelta da noi, ma la polarizzazione potrebbe essere valutata anche utilizzando altre basi ortonormali. Ad esempio, \(\nearrow\) è una sovrapposizione di \(\uparrow\) e \(\rightarrow\):
+\[
+|\nearrow\rangle = \frac{|\uparrow\rangle + |\rightarrow\rangle}{\sqrt{2}}
+\]
 \end{warn}
 
-Per effettuare l'esperimento di Dirac, andando a scegliere un pool di filtri A (filtro per polarizzazioni verticali \(\uparrow\)), B (filtro per polarizzazioni \(\nearrow\)) ed un filtro C (filtro per polarizzazioni \(\rightarrow\)).
-Prima di iniziare ad aggiungere i filtri, si va a posizionare un generatore di fotoni (es. uno schermo o un laser).
-L'esperimento si divide in tre principali momenti:
+Per effettuare l'esperimento di Dirac si sceglie un insieme di tre filtri: A (lascia passare solo la polarizzazione \(\uparrow\)), B (lascia passare solo la polarizzazione \(\nearrow\), a \(45^\circ\) rispetto ad A e C) e C (lascia passare solo la polarizzazione \(\rightarrow\)).
+Prima di aggiungere i filtri, si posiziona un generatore di fotoni (es. uno schermo o un laser).
+L'esperimento si divide in tre momenti:
 \begin{enumerate}
-    \item Posizionamento del filtro A, che filtrerà la parte di polarizzazione \(\uparrow\) tra la sorgente di fotoni e l'osservatore. Questo farà notare un affievolimento della luce emessa
-    
-    \item Posizionamento del filtro di tipo C, che filtrerà la restante parte del fotone \(\rightarrow\), questo non 
-
+\item Posizionamento del filtro A tra la sorgente di fotoni e l'osservatore: passa solo la componente \(\uparrow\), quindi si nota un affievolimento della luce emessa.
+\item Posizionamento del filtro C dopo A: i fotoni che hanno superato A sono nello stato \(\uparrow\), che è ortogonale a \(\rightarrow\), quindi la probabilità che C li trasmetta è nulla e l'osservatore non vede alcun fotone.
+\item Posizionamento del filtro B tra A e C: l'osservatore torna a vedere della luce, con intensità pari a \(1/4\) di quella uscita da A. Infatti ogni filtro successivo trasmette con probabilità \(\cos^2 45^\circ = 1/2\).
 \end{enumerate}
+
+La conseguenza di tale esperimento è che non possiamo pensare la polarizzazione come una proprietà fissa del fotone, sulla quale un filtro effettua semplicemente una selezione riducendo il numero di fotoni. Nella terza fase, aggiungendo il filtro B, la luce ricompare: questo accade perché la misura \emph{modifica lo stato} del fotone. Il filtro B prepara i fotoni nello stato \(\nearrow\), che ha una componente non nulla su \(\rightarrow\). Serve quindi uno studio basato sulla meccanica quantistica e, in particolare, sulle basi lungo cui si misura lo stato di polarizzazione del fotone. Tale esperimento potrà essere osservato nella figura [\ref{img:dirac-exp}]. Tale esperimento con le relative immagini sono state prese come riferimento dal riferimento \cite{gentle2011quantum}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{fig/chapter-4/dirac-exp-1.png}\hfill
+  \includegraphics[width=0.4\textwidth]{fig/chapter-4/dirac-exp-2.png}\hfill
+  \includegraphics[width=0.4\textwidth]{fig/chapter-4/dirac-exp-3.png}
+  \caption{Casi dell'esperimento di Dirac}
+  \label{img:dirac-exp}
+\end{figure}
+
+\subsubsection{Matematica dell'esperimento}
+Andando a considerare il fotone mappato su \(\ket{\varphi}\), con polarizzazione \(\Theta\) rispetto a \(\ket{\uparrow}\), per cui la polarizzazione del fotone potrà essere scritta come:
+\[
+\ket{\varphi}=sin(\Theta)\ket{\rightarrow} + cos(\Theta)\ket{\uparrow}
+\]
+Quindi, tale fotone, passerà per il filtro A con probabilità \(cos^2(\Theta)\).
+
+Quindi la proiezione lungo \(\ket{\uparrow}\) funge da misuratore e l'uscita sarà pari a \(\ket{\varphi}_A = \ket{\uparrow}\). Andando ad utilizzare poi il filtro C che fa passare solo quei fotoni che, osservati, saranno \(\ket{\rightarrow}\), dato che dopo il filtro A passeranno solo, o fotoni nulli, o fotoni \(\ket{\uparrow}\), allora all'uscita del filtro C, usciranno tutte rappresentazioni nulle. Questo poichè la probabilità, dopo il filtro A, d' avere un fotone che collassa in \(\ket{\rightarrow}\) è del tutto nulla \(|\alpha_1|^2=0\). Questo spiega anche matematicamente quello che succede. 
+
+Inserendo il filtro B, tra C ed A, esso permetterà di misurare il fotone facendolo collassare in uno stato che possa essere \(\ket{\nearrow}\) o \(\ket{\nwarrow}\), facendo passare solo le componenti \(\ket{\nearrow}\). Tale stato, guardandolo sulla base delle polarizzazioni \(\ket{\uparrow}\) e \(\ket{\rightarrow}\), si otterrebbe il seguente stato:
+\[
+\ket{\nearrow} = \frac{1}{\sqrt{2}}\ket{\rightarrow} + \frac{1}{\sqrt{2}}\ket{\uparrow}
+\]
+
+Mentre la rappresentazione di \(\ket{\uparrow}\) è definito come:
+\[
+\ket{\uparrow} = \frac{1}{\sqrt{2}}\left(\ket{\nearrow}+\ket{\nwarrow}\right)
+\]
+
+Da queste considerazioni capiamo che il filtro B, mappi e lasci passare su \(\ket{\nearrow}\) è pari a \(|\alpha_0|^2=0.5\), mentre la probabilità che passi, dal filtro C, collassi in \(\ket{\rightarrow}\), è pari sempre a \(|\alpha_0|^2 = 0.5\) (tale \(\alpha_0\) non è da confondere con quello precedente).
+
+Andando a considerare i principi della probabilità condizionale, si otterrà che:
+\[
+P(\ket{\rightarrow}\text{dopo tutti i filtri}) = P(\ket{\nearrow} \text{dal filtro B})P(\ket{\rightarrow} \text{dal filtro C})= 0.5 \cdot 0.5 = 0.25 = \frac{1}{4} = 25\%
+\]
+
+\subsection{Misura di un sistema a 2 Qubit}
+Quando si tiene in considerazione un sistema a 2 qubit bisogna fare una differente considerazione.
+Considerando il nuovo spazio di Hilbert generato dal prodotto vettoriale dei due qubit, si ottiene che lo stato dei due qubit può essere rappresentato come:
+\[
+\ket{\varphi} = \alpha_{00} \ket{00} + \alpha_{01} \ket{01} + \alpha_{10} \ket{10} + \alpha_{11} \ket{11}
+\]
+\[
+\alpha_{ij} \in \mathbb{C}, \sum_{i,j}|\alpha_{ij}|^2=1
+\]
+
+Se vado a misurare tutto il sistema, allora, come per il singolo qubit, potrò avere una dei 4 possibili elementi in uscita. La probabilità di ogni elemento è data dalla norma quadra degli specifici coefficenti (\(\mathcal{P}_{00} = |\alpha_{00}|^2\)). Il caso interessante è quello in cui vada a misurare un singolo qubit della coppia. In questo caso si ottiene la seguente casistica:
+\[
+\mathcal{P}_0 = |\alpha_{00}|^2 + |\alpha_{01}|^2
+\]
+
+Considerando il passaggio da un sistema multi-qubit ad uno single-qubit, si eseguono i seguenti passaggi:
+\begin{enumerate}
+  \item \textbf{Considerazione dei due casi}: In questo caso si va a "scindere" il prodotto tensoriale tra i due qubit, cercando di portare "fuori" i possibili stati associati al primo qubit. Ottenendo:
+  \[
+  \ket{\varphi} = \ket{0} \otimes (\alpha_{00} \ket{0} + \alpha_{01}\ket{1}) + \ket{1} \otimes (\alpha_{10} \ket{0} + \alpha_{11}\ket{1})
+  \]
+
+  \item \textbf{Normalizzazione}: Per ottenere qualcosa di più preciso si prosegue andando a riscrivere l'espressione come:
+  \[
+  \ket{\varphi} = u \ket{0} \otimes \left(\frac{\alpha_{00}}{u} \ket{0} + \frac{\alpha_{01}}{u}\ket{1}\right) + v\ket{1} \otimes \left(\frac{\alpha_{10}}{v} \ket{0} + \frac{\alpha_{11}}{v}\ket{1}\right)
+  \]
+
+  Andando a considerare:
+  \[
+  u = \sqrt{|\alpha_{00}|^2 + |\alpha_{01}|^2}
+  \]
+  \[
+  v = \sqrt{|\alpha_{10}|^2 + |\alpha_{11}|^2}
+  \]
+\end{enumerate}
+
+Una volta impostato tale espressione, andiamo a vedere come la misurazione del primo qubit influenzerà il sistema. Considerando ed ipotizzando che dalla misura del primo qubit esso sia risultato \(\ket{0}\), allora si ottiene la seguente espressione:
+\[
+\ket{\varphi}_{new} = \frac{\alpha_{00} \ket{00} + \alpha_{01} \ket{01}}{u} =  \frac{\alpha_{00} \ket{00} + \alpha_{01} \ket{01}}{\sqrt{|\alpha_{00}|^2 + |\alpha_{01}|^2}}
+\]
