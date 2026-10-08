@@ -98,9 +98,32 @@ Solitamente, a grandi distanze, si evita generare sempre delle nuove coppie EPR 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{fig/chapter-5/entanglement_swapping_misure.png}
+\includegraphics[width=\textwidth]{fig/Chapter-1/chapter-5/entanglement_swapping_misure.png}
 \caption{Circuito dell'entanglement swapping}\label{img:ent-swapping}
 \end{figure}
 
 \subsection{Il paradosso dell'Entanglement}
-Da quello che ci siamo detti prima, quindi, si potrebbe pensare che con una coppia di qubit entangled si risolva il problema 
+Da quello che ci siamo detti prima, quindi, si potrebbe pensare che con una coppia di qubit entangled si possa trasferire informazione ad una velocità maggiore di quella della luce, ma questo non è proprio vero. Quando noi misuriamo su di una coppia EPR, il risultato è puramente probabilistico, il che va contro lo stesso significato di \textbf{informazione}, questo perchè il trasmettitore non decide cosa inviare al ricevitore, si avrà solo la certezza di aver misurato entrambi lo stesso stato, ma non che il trasmettitore volesse trasmettere effettivamente quello.
+
+\begin{info}
+\textbf{Significato di Condivisione dell'Informazione}\\
+Condividere un informazione vuol dire che il ricevitore può risolvere una sua incertezza rispetto a quello che la sorgente vuole condividere.
+Questo si ri-collega a quello che abbiamo detto precedentemente, ovvero, che se il mittente non può controllare cosa inviare, allora non si avrà un vero e proprio trasferimento di informazione, o almeno, non ad una velocità superiore a quella della luce
+\end{info}
+
+\subsection{Valutazione dell'entanglement in sistemi ad n-Qubit}
+Il concetto di entanglement è fortemente legato al concetto di "decomposizione" del sistema, per capirci, se ho un sistema ad n-qubit, e non ci sono entanglement, io posso scrivere lo stato del sistema come:
+\[
+\ket{\psi} = \ket{\psi_0} \otimes \ket{\psi_1} \otimes \ket{\psi_3} \otimes \dots 
+\]
+
+Quindi come il prodotto tensoriale dei vari qubit appartenenti al mio sistema. Se vado a considerare i qubit accoappiati in coppie entangled, posso vederli come degli unici sistemi, potento poi ri-scrivere lo stato come:
+\[
+\ket{\psi} = \ket{wA} \otimes \ket{wB} \otimes \dots
+\]
+
+Dove \(\ket{wA}\) è l'entanglement tra 2 Qubit del sistema e \(\ket{wB}\) l'entanglement tra altri 2 ecc. 
+
+Se guardassi il sistema in questo modo, potrei comunque esprimerlo come il prodotto vettoriale di tutte le coppie entanglate tra di loro. Nonostante questo, il sistema non sarebbe esprimibile come un prodotto tensoriale di tutti i qubit tra di loro. 
+
+Questo discorso è importante per la definizione stessa che abbiamo dato di sistema in entanglement. Fino ad ora, se consideravamo due qubit il sistema risultava in entanglement perchè non potevo esprimerlo come prodotto tensoriale di due stati differenti, nel caso ad n-qubit, invece, dipende dal punto di vista. Se faccio un \textbf{clustering} rispetto ai singoli sistemi che sono in entanglement (come abbiamo fatto precedentemente considerando i due sistemi a 2 qubit come due sistemi separati e non entanglati tra di loro), allora posso esprimere lo stato del mio sistema come un prodotto vettoriale di questi ultimi. Quindi lo stato di entanglement di un sistema dipende anche in base a cosa voglio osservare ed agli entanglement "locali" tra i diversi qubit. 

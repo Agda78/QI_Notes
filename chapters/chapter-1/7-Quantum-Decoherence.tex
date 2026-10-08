@@ -1,0 +1,12 @@
+ \section{Decoerenza Quantistica}
+Fino ad ora abbiamo considerato il qubit come un sistema isolato che mantiene la sua informazione per un tempo indeterminato. Questo nella realtà non è propriamente vero, vi è un interazione con l'ambiente impossibile da evitare completamente, questo sarà poi tradotto in un entanglement con l'ambiente stesso, ma ne discuteremo successivamente. 
+
+La questione della decoerenza rimane dcomunque aperta, questo può portare a dei problemi riguardanti lo stato del qubit nel tempo, ed al suo tempo in cui può essere processato (rispetto al passato dove il tempo era di diversi micro-secondi, adesso si può parlare anche di millisecondi o addirittura secondi. Questo dipende fortemente anche dalla natura del qubit, in questo stiamo considerando i Qubit Criogenici). Nel mondo classico, l'unico problema possibile è il bit flip, e quindi nel caso il dato corretto fosse 1 diventa 0 e vicevera. Mentre nel mondo quantum i principali problemi sono due:
+\begin{itemize}
+    \item \textbf{Bit-flip}: Che ugualmente al caso classico, uno stato in \(\ket{1}\) passa allo stato \(\ket{0}\) e viceversa. Questo corrisponde all'applicazione di una gate X di Pauli
+    
+    \item \textbf{Phase-flip (Dephasing)}: In questo caso le conseguenze andrebbero sulla base di Hadamard, dato che sarebbe come andare ad applicare una gate Z di Pauli
+\end{itemize}
+
+Per cercare di raggirare tali problematiche ci sono diversi modi e diverse tecniche che rientrano nell'ambito della \textbf{Quantum Error Correction} che si vedrà nei capitoli successivi.
+
