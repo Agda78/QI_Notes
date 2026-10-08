@@ -1,0 +1,106 @@
+\section{Quantum Entanglement}
+La maggior parte degli stati di un sistema ad n-qubit non può essere scritto come il prodotto tensioriale di n qubit singoli, nonostante siano tutte delle combinazioni lineari degli elementi della base del sistema ad n-qubit.
+
+Un caso speciale di superposizione di più qubit è quella in cui non posso scrivere lo stato del mio sistema ad n-qubit come il prodotto tensoriale di questi ultimi. Tali stati sono detti stati entranglati (\textbf{entrangled states}).
+
+\[
+\ket{\varphi} \ne \ket{u} \otimes \ket{v}, \ket{u},\ket{v} \text{qubits
+}
+\]
+
+Per comprendere al meglio tale concetto, considerando un generico sistema di 2 qubit, si avrà che:
+\[
+\ket{\varphi} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{01})
+\]
+
+Tale Qubit può essere riscritto come prodotto tensoriale dei due qubit, come:
+\[
+\ket{\varphi} = \ket{0} \otimes \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})
+\]
+
+Da cui posso ben distinguere lo stato dei due qubit, in maniera del tutto indipendente l'uno dall'altro. Questo, in un certo senso, è come dire che i due qubit, tra di loro, non interagiscono e non dipendono l'uno dall'altro.
+
+Mentre nel caso di un \textbf{entangled state}, si avrà che:
+
+\[
+\ket{\varphi} = \ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+\]
+
+Tale stato non può essere decomposto in un prodotto tensoriale tra due Qubit distinti. Questo è spiegato dal fatto, che determinato lo stato di un qubit, sarà automaticamente determinato anche lo stato dell'altro qubit. Questo è un risultato interessante, dato che il sistema sembra essere all'interno di uno stato in cui una eventuale misurazione, e quindi un collasso, sul primo Qubit, autodetermineranno lo stato del secondo qubit. 
+
+Per dimostrare che non sia possibile rappresentare lo stato \(\ket{\Phi^+}\) con un prodotto tensoriale è la seguente:
+\[
+\ket{\Phi^+} = \ket{u} \otimes \ket{v} = 
+\begin{bmatrix}
+u_1 v_1 \\
+u_1 v_2 \\
+u_2 v_2 \\
+u_2 v_2
+\end{bmatrix}
+\implies
+\]
+\[
+\implies
+\begin{cases}
+u_1 v_1 = \frac{1}{\sqrt{2}} \\
+u_1 v_2 = 0 \\
+u_2 v_1 = 0 \\
+u_2 v_2 = \frac{1}{\sqrt{2}}
+\end{cases}
+\implies
+\begin{cases}
+u_1 = 0 \implies u_1 v_1 \ne \frac{1}{\sqrt{2}}\\
+or \\
+v_2 = 0 \implies u_2 v_2 \ne \frac{1}{\sqrt{2}}
+\end{cases}
+\]
+
+Il che dimostra che non è possibile scrivere tale stato come un prodotto tensoriale di due stati "indipendenti". 
+
+Oltre allo stato \(\ket{\Phi^+}\) vi sono altri 3 stati (nel caso di sistemi a 2 qubit) di bell possibili. Gli \textbf{stati di Bell} sono:
+\begin{itemize}
+    \item \(\ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})\)
+    \item \(\ket{\Phi^-} = \frac{1}{\sqrt{2}}(\ket{00}-\ket{11})\)
+    \item \(\ket{\Psi^+} = \frac{1}{\sqrt{2}}(\ket{01}+\ket{10})\)
+    \item \(\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01}-\ket{10})\)
+\end{itemize}
+
+Effettuare operazioni unitarie sul singolo qubit non vanno a cambiare l'entanglement che c'è, quello che in realtà succede è il passaggio da uno stato di bell ad un altro. Gli stati di Bell sono puri, ma questo implica che i qubit, singolarmente, non si trovano in uno stato puro (considerandoli singolarmente ed in maniera separata). 
+
+
+\subsection{Misura degli stati di Bell}
+Come detto precedentemente, la misura di un qubit su uno stato di Bell, fa collassare anche l'altro nello stato dettato. Se si misurano entrambi i qubit rispetto lo stesso operatore (stessa base ortonormale di riferimento), allora si otterrà un risultato autodeterminato, in base allo stato di Bell in cui ci troviamo. 
+
+Per capire al meglio, consideriamo lo stato
+\[
+\ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+\]
+
+Si avranno solo due probabilità:
+\[
+\mathcal{P}_{00} = \mathcal{P}_{11} = \frac{1}{2}
+\]
+
+Dove \(\mathcal{P}_{00}\) è la probabilità che i due qubit, dopo la misura, siano entrambi in \(\ket{0}\), mentre \(\mathcal{P}_{11}\) è la probabilità che entrambi i qubit, dopo la misura, si trovino in \(\ket{1}\).
+
+Questo però vuol dire che se misuro i due qubit lungo lo stesso operatore Z (autovettori della base canonica), allora otterrò lo stesso risultato da entrambe le misure in maniera deterministica, il che dirà che tali qubit sono perfettamente correlati. Misurando lungo altri operatori, considerando sempre lo stato \(\ket{\Phi^+}\), il risultato sarà randomico, ma sempre uguale tra le due misure (se le due misure vengono fatte lungo sempre la stessa base). 
+
+La misura di uno stato entangled, quindi, dipende su quale dei due qubit ho effettuato prima la misura. Il caso in cui le due misure avvengano allo stesso tempo viene escluso, poichè dalla teoria della relatività di Einstein riesco sempre a ricavare una misura che avviene prima di un altra. 
+
+Le coppie di particelle entanglate sono anche chiamate \textbf{coppie EPR}(Einstein-Podolsky-Rosen), misurare uno dei due qubit, cambia istantaneamente dell'altro qubit, facendolo collassare.
+
+\begin{info}
+\textbf{Generazione delle coppie EPR}\\
+Oggi le coppie EPR sono una delle cose da realizzare più challenging. In particolare per il loro utilizzo a lunghe distanze. Più precisamente, una delle metodologie più usate per generare le coppie EPR è l'\textbf{SPDC} (Spontaneous Parametric Down-Conversion) \cite{anwar2021entangled}, tale sistema prevede una pompa (un laser), che viene sparato attraverso un cristallo non lineare, tale fotone ha una piccola probabilità di dividersi in due fotoni ad energia minore detti \textit{signal} ed \textit{idler} (tale processo è tutto interno al cristallo). \cite{pan2012multiphoton}. Quello che permette a tali fotoni di essere entanglati non è l'interazione che c'è tra i due, ma è bensì la legge di conservazione dell'energia e quella di conservazione dell'impulso. Da qui entra poi in gioco quelli che sono gli stati di bell, ovvero il fatto che i due fotoni possono avere polarizzazioni uguali o polarizzazioni ortogonali.
+
+Solitamente, a grandi distanze, si evita generare sempre delle nuove coppie EPR da distribuire, si preferisce partire da due coppie Entanglate, entanglare a sua volta 2 qubit, portandoli in uno stato di bell, per poi misurarli, qesto farà collassare i due entanglement generati precedentemente, facendo entrare, i qubit non misurati, e mai interagenti, in entanglement tra di loro. Questo farà sì di avere solo 2 fotoni entangled, ma ad una "distanza" maggiore. Il circuito a cui si fa riferimento per l'entanglement swapping è quello mostrato nella figura [\ref{img:ent-swapping}]. Tale circuito va letto da sinistra verso desctra considerando l'avanzata verso destra come il tempo, mentre, le linee continue sono i qubit che evolvono, mentre la doppia linea grigia sono dei bit classici che evolvono nel tempo
+\end{info}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig/chapter-5/entanglement_swapping_misure.png}
+\caption{Circuito dell'entanglement swapping}\label{img:ent-swapping}
+\end{figure}
+
+\subsection{Il paradosso dell'Entanglement}
+Da quello che ci siamo detti prima, quindi, si potrebbe pensare che con una coppia di qubit entangled si risolva il problema 

@@ -1,1 +1,238 @@
 \section{Trasformazioni di stato quantistiche}
+Le trasformazioni di un sistema quantistico è descritta dall'equazione di Shroudinger (o quarto postulato della meccanica quatistica, questo dipende molto dal testo di riferimento, nel mio caso ho utilizzato le seguenti dispense \cite{giliberti2007limite}):
+\[
+\hat{H} \ket{\psi(t)} = i \hbar \frac{\partial}{\partial t} \ket{\psi(t)}
+\]
+
+Senza spaventarsi, i vettori \(\ket{\psi(t)}\) sono i vettori di stato a valori variabili nel tempo. Questo però andrebbe ad introdurre una variabilità di tutti i valori all'interno del vettore a tempo continuo. Nel nostro caso, la dipendenza dal tempo decade, questo è dovuto principalmente al fatto che ci troviamo in un sistema chiuso (o isolato). Data tale condizione, quindi, vedremo il vettore \(\ket{\psi(t)} = \ket{\psi}\).
+Le evoluzioni, quindi, di uno stato quantistico dipendono dall'operatore che stiamo andando a considerare. L'equazione di Shroundinger, anche in questo caso, ci dice che l'evoluzione dello stato di un sistema quantistico è descritta dall'operatore \(\hat{H}\), tale matrice è una matrice \textbf{Hermitiana}.
+Un operatore che viene descritto da una matrice Hermitiana è detto operatore \textbf{autoaggiunto}. Questo, confrontato con gli spazi vettoriali reali è equivalente alla proprietà di matrice simmetrica, con la variazione che, essendo i valori complessi, la matrice non è più solo trasposta, ma anche coniugata. Tale proprietà permette anche di dire che una gate quantistica è \textbf{reversibile}.
+
+\begin{info}
+\textbf{Matrice Hermitiana} \\
+Una matrice Hermitiana è una matrice, la cui trasposta coniugata è uguale alla matrice originale. Questo, matematicamente, viene descritto nel seguente modo:
+\[
+U \in \mathbb{C}^{n \times n}
+\]
+\[
+U U^\dagger = I = U^\dagger U
+\]
+\[
+U = U^\dagger
+\]
+
+Tale matrice andrà a descrivere quello che è un operatore \textbf{auto-aggiunto}
+\end{info}
+
+Dalla precedenti considerazioni, quindi, considerando uno stato quantistico di un sistema chiuso \(\ket{\psi}_i\) (dove la \(i\) sta per \textit{input}), quindi non dipendente dal tempo. L'evoluzione dello stato nello stato \(\ket{\psi}_o\) è completamente descritto da una matrice Hermitiana U. Tale per cui:
+\[
+\ket{\psi}_o = U \ket{\psi}_i
+\]
+
+Per ricavare e realizzare le gate, quindi, tale vincolo mostra una possibil soluzione per l'Hemiltoniano.
+
+Per andare a risolvere l'equazione di Shroudinger, consideriamo il caso in cui l'Hermitiano \(\hat{H}\) non dipenda dal tempo (dato dal fatto che il sistema sia isolato). Se consideriamo l'equazione di Shroudinger, avremo che:
+\[
+i \hbar \frac{\partial}{\partial t} \ket{\phi(t)} = H \ket{\phi(t)}
+\]
+
+L'incognita di tale equazione è il vettore \(\ket{\phi}\) per poi andare a valutare \(H\) che essendo una costante, sarà poi calcolabile.
+
+Tale equazione, essendo \(H\) non dipendente dal tempo, diventa un'equazione differenziale omogenea, la cui soluzione è banale.
+
+\begin{info}
+\textbf{Equazione differenziale omogenea} \\
+Tale equazione differenziale si mostra nella forma:
+\[
+\dot{x}(t) = c x(t)
+\]
+la soluzione sarà quindi presentata come:
+\[
+\int_{t_0}^{t} \frac{\dot{x(t)}}{x(t)} dt = \int_{t_0}^{t} c dt
+\]
+
+\[
+log(\frac{x(t)}{x(t_0)}) = c (t - t_0)
+\]
+
+\[
+\frac{x(t)}{x(t_0)} = e^{c(t-t_0)}
+\]
+
+\[
+x(t)=e^{c(t-t0)}x(t_0)
+\]
+\end{info}
+
+Da tale considerazione viene fuori che la soluzione dell'equazione di Shrudinger, nel caso di \(H\) non dipendente dal tempo, sarà:
+\[
+\ket{\phi(t)} = e^{-\frac{i}{\hbar} H (t-t_0)}\ket{\phi(t_0)}
+\]
+
+Tale esponenziale, essendo un esponenziale con una matrice, viene valutato sfruttando la rappresentazione in serie dell'esponenziale, quindi si avrà:
+\[
+e^A = 1 + A + \frac{A^2}{2} + \dots
+\]
+
+Dove \(A^n\) è il prodotto righe per colonne della matrice per \(n\)-volte. Nel caso in cui \(H\) sia diagonale, il calcolo si semplifica, diventando solo l'esponenziale degli elementi all'interno della matrice. Quindi si avrebbe una matrice:
+\[
+e^A = 
+\begin{bmatrix}
+e^{a_{11}} & 0 & \dots \\
+0 & \ddots & 0 \\
+\vdots & \dots & e^{a_{nn}}    
+\end{bmatrix}
+\]
+
+\begin{warn}
+Il processo mostrato precedentemente, funziona solo nel caso di matrici diagonali, altrimenti, bisognerà passare per una diagonalizzazione della matrice, che permetterà di poter calcolare l'esponenziale mediante lo stesso processo, per poi ri-trasformarla.
+Considerando un operatore autoaggiunto \(H\), esiste una matrice unitaria \(V\) (le cui colonne sono gli autovettori di \(H\)), tale per cui \(H=VDV^\dagger\).
+
+Andando a verificare che \(H^n = V D^n V^\dagger\), allora considerando lo sviluppo in serie, e raccogliendo a fattor comune le matrici \(V\) e \(V^\dagger\), si ottiene:
+\[
+e^{-iH \frac{\Delta t}{\hbar}} = V e^{-iD \frac{\Delta t}{\hbar}} V^\dagger
+\]
+
+Questo è il "secondo metodo", per calcolare l'esponenziale di una matrice nel caso quest'ultima non sia diagonale
+\end{warn}
+
+Queste operazioni, che sembrano semplici, nel caso di sistemi a singolo qubit, divergono nel caso a 2 qubit. Tali rappresentazioni sono importanti quando si vuole andare a realizzare quelle che saranno le \textbf{Gate}, per cui un Qubit dovrà passare per essere "processato".
+
+Quindi la soluzione dell'equazione di Shroudinger serve a capire quello che è il legame tra la computazione quantistica logica e quella reale. 
+
+Per comprendere al meglio tale cosa, facciamo un esempio.
+In \textbf{Quantum Computing} esiste la gate \(X\), tale gate funziona da not quantistico, ovvero, fa in modo che, dato un elemento della base canonica, si avrà:
+\[
+X \ket{0} = \ket{1}
+\]
+\[
+X \ket{1} = \ket{0}
+\]
+
+Immaginando geometricamente la sfera di bloch, noteremo che quello che si sta andando ad effettuare è una rotazione di 180 gradi (o \(\pi\) radianti) sull'asse \(x\). La matrice \(X\) è rappresentata come:
+\[
+X = 
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\]
+A livello di computazione logica. Una volta valutata tale matrice, per trovare l'ermitiano vado a risolvere la seguente equazione:
+\[
+U = e^{-iH \frac{t}{\hbar}} = X
+\]
+
+Andando alla ricerca di \(H\), si otterrà quella che dovrà essere la trasformazione effettiva del sistema fisico reale.
+
+\subsection{Gate di Pauli}
+Le Gate applicabili ad un Qubit sono varie, tra le più note vi sono le seguenti (esse sono mostrate sia nella loro forma matriciale che "circuitale", tali definizioni saranno poi più chiare a mano a mano che si proseguirà nel percorso):
+
+\begin{itemize}
+    \item \textbf{Identità}:
+\[
+    I = 
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\]
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{fig/chapter-5/porta_I.png}
+\end{center}
+
+\item \textbf{Pauli-X}(NOT):
+\[
+    X =
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\]
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{fig/chapter-5/porta_X.png}
+\end{center}
+
+\item \textbf{Pauli-Y}:
+\[
+    Y =
+\begin{bmatrix}
+0 & -i \\
+i & 0
+\end{bmatrix}
+\]
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{fig/chapter-5/porta_Y.png}
+\end{center}
+
+\item \textbf{Pauli-Z}:
+\[
+    Z =
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{fig/chapter-5/porta_Z.png}
+\end{center}
+
+\item \textbf{Hadamard}:
+\[
+    H = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+\]
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{fig/chapter-5/porta_H.png}
+\end{center}
+
+\item \textbf{C-NOT}:
+\[
+\text{CNOT} =
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+\]
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{fig/chapter-5/porta_CNOT.png}
+\end{center}
+\end{itemize}
+
+\subsection{Teorema del No-Cloning}
+Uno stato quantistico arbitrario non può essere copiato, questa è una conseguenza della linearità delle trasformazioni unitarie. Posso preparare anche dei qubit che siano simili, ma questo non giustifica in alcun modo l'esistenza di una porta unitaria che permetta di effettuare il cloning di un bit. Questa è una delle principali differenze rispetto al mondo classico, dove le indormazioni possono essere copiate in continuazione tra le diverse parti del sistema. 
+
+Attenzione, questo non vuol dire che non possa preparare uno stato quantistico già dall'inizio, posso imporre ad uno stato di trovarsi in un vettore ortogonale noto (come ad esempio \(\ket{0}\) o \(\ket{1}\)). 
+
+Il teorema del no-cloning può essere dimostrato nel seguente modo:
+
+Ipotizzando per assurdo che esista una trasformazione unitaria che permette di effettuare il cloning di un Qubit, avremo che:
+\[
+C(\ket{a} \ket{0}) = \ket{a} \ket{a}, \forall \ket{a}
+\]
+\[
+C(\ket{b} \ket{0}) = \ket{b} \ket{b}, \forall \ket{b}
+\]
+
+Dove l'operatore \(C\) va ad effettuare un clone del vettore \(\ket{a}\) nel vettore \(\ket{0}\) (che è stato preparato). Considerando:
+\[
+\ket{\varphi} = \frac{1}{\sqrt{2}}(\ket{a} + \ket{b})
+\]
+\[
+C(\ket{\varphi} \ket{0}) = \ket{\varphi} \ket{\varphi} = \frac{(\ket{a}+\ket{b})(\ket{a}+\ket{b})}{2} = \frac{\ket{a}\ket{a}+ \ket{a}\ket{b}+\ket{b}\ket{a}+\ket{b}\ket{b}}{2}
+\]
+
+Per la linearità, si ottiene:
+\[
+C(\ket{\varphi} \ket{0}) = \frac{C(\ket{a} \ket{0})+C(\ket{b}\ket{0})}{\sqrt{2}} = \frac{\ket{a}\ket{a} + \ket{b}\ket{b}}{\sqrt{2}}
+\]
+
+Ma tale espressione è diversa da quella valutata precedentemente, il che va contro il fatto che \(C\) sia unitario e lineare, il che è assurdo per il quarto postulato della meccanica quantistica.
+
+Questa cosa si traduce facilmente all'interno delle comunicazioni, una volta che ho inviato un qubit, o questo arriva a destinazione, oppure viene perduto, non è possibile ri-effettuare l'invio dato che non è possibile conservare una copia stessa del qubit all'interno del mittente
+
+

@@ -32,6 +32,12 @@
     sorting=none,             % numerazione in ordine di citazione
     giveninits=true
 ]{biblatex}
+
+\DeclareFieldFormat{url}{\footnotesize\url{#1}}
+\AtBeginBibliography{%
+  \everymath{\displaystyle}%
+  \renewcommand{\UrlFont}{\footnotesize\ttfamily}%
+}
 \addbibresource{bibliography.bib}
 
 \usepackage{braket}
