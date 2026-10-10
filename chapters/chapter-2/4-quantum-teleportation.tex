@@ -1,1 +1,25 @@
 \section{Quantum Teleportation}
+Il Quantum Teleportation è una tecnica che permette di poter trasferire un qubit da yun punto ad un altro senza perdere in alcun modo, l'informazione quantistica racchiusa nel Qubit. Solitamente si tende ad evitare la trasmissione diretta, poichè la perdita di un eventuale Qubit è disastrosa, per via del teorema del no-cloning.
+
+La quantum teleportation cerca di ovviare a questo problema cercando di sfruttare l'entanglement quantistico per poter "trasferire" tale stato quantistico. 
+
+Il funzionamento della quantum teleportation ha come base:
+\begin{itemize}
+    \item Trasmissione di due bit classici che permettono di "aggiustare" il qubit di destinazione
+    \item Generatore e distriburore di coppie EPR
+\end{itemize}
+
+Con queste due cose, tra trasmettitore e ricevitore, sarà possbile effettuare il trasferimento del qubit da un punto ad un altro
+
+\subsection{Matematica del Teleporting}
+Per comprendere bene il funzionamento del teleporting, andiamo a considerare un Qubit messo in una posizione generica(nel nostro caso usiamo la base computazionale, ma non è importante, non andremo ad agire in base a quella):
+\[
+\ket{\varphi} = \alpha \ket{0} + \beta \ket{1}
+\]
+
+Considerando di avere una coppia di qubit massimamente entanglati:
+\[
+\ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+\]
+
+Il Qubit \(\ket{\varphi}\), sarà "trasmesso" come:
