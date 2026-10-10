@@ -22,4 +22,16 @@ Considerando di avere una coppia di qubit massimamente entanglati:
 \ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
 \]
 
-Il Qubit \(\ket{\varphi}\), sarà "trasmesso" come:
+Il Qubit \(\ket{\varphi}\), sarà "trasmesso" mediante operazioni locali di Alice (coem una Bell-State Measurement) e l'utilizzo di coppi EPR condivise tra la sorgente e la destinazione.
+
+Il circuito totale della quantum teleportation, sarà quello rappresentato all'interno della figura [\ref{img:quantum-teleportation}]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig/Chapter-2/chapter-4/teleportation.png}
+\caption{Circuito per la teleportation}\label{img:quantum-teleportation}
+\end{figure}
+
+Dove la coppia A e b è la rappresentazione della coppia (come si evince dalla prima parte della figura) di Qubit in entanglement distribuiti ad Alice e Bob. Una volta distribuiti, se si vuole "trasportare" un qubit di Alice a Bob, si fa interagire tale qubit, mediante una Bell-State Measuremen, con il qubit in entanglement con quello di Bob. I risultati delle misure verranno inviati a Bob che si occuperà di andare ad effettuare le "correzioni" al ricevitore (Questo in base allo stato di bell in cui gli altri due qubit sono stati raccolti). Matematicamente, alla fine, il qubit che era precedentemente in entanglement con un qubit di Alice, diventerà, a tutti gli effetti, il qubit che è stato trasferito. Quindi, dall'immagine, è B il qubit che alla fine è stato "trasferito" a Bob.
+
+\textcolor{red}{Partire da slide 119 e completare il discorso matematico, rifinire prima i calcoli su carta, per poi riportarli in latex in modo da renderli più comprensibili}. 
