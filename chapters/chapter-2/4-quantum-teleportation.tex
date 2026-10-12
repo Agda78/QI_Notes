@@ -32,6 +32,83 @@ Il circuito totale della quantum teleportation, sarà quello rappresentato all'i
 \caption{Circuito per la teleportation}\label{img:quantum-teleportation}
 \end{figure}
 
-Dove la coppia A e b è la rappresentazione della coppia (come si evince dalla prima parte della figura) di Qubit in entanglement distribuiti ad Alice e Bob. Una volta distribuiti, se si vuole "trasportare" un qubit di Alice a Bob, si fa interagire tale qubit, mediante una Bell-State Measuremen, con il qubit in entanglement con quello di Bob. I risultati delle misure verranno inviati a Bob che si occuperà di andare ad effettuare le "correzioni" al ricevitore (Questo in base allo stato di bell in cui gli altri due qubit sono stati raccolti). Matematicamente, alla fine, il qubit che era precedentemente in entanglement con un qubit di Alice, diventerà, a tutti gli effetti, il qubit che è stato trasferito. Quindi, dall'immagine, è B il qubit che alla fine è stato "trasferito" a Bob.
+Dove la coppia A e B è la rappresentazione della coppia (come si evince dalla prima parte della figura) di Qubit in entanglement distribuiti ad Alice e Bob. Una volta distribuiti, se si vuole "trasportare" un qubit di Alice a Bob, si fa interagire tale qubit, mediante una Bell-State Measuremen, con il qubit in entanglement con quello di Bob. I risultati delle misure verranno inviati a Bob che si occuperà di andare ad effettuare le "correzioni" al ricevitore (Questo in base allo stato di bell in cui gli altri due qubit sono stati raccolti). Matematicamente, alla fine, il qubit che era precedentemente in entanglement con un qubit di Alice, diventerà, a tutti gli effetti, il qubit che è stato trasferito. Quindi, dall'immagine, è B il qubit che alla fine è stato "trasferito" a Bob.
 
-\textcolor{red}{Partire da slide 119 e completare il discorso matematico, rifinire prima i calcoli su carta, per poi riportarli in latex in modo da renderli più comprensibili}. 
+Per comprendere al meglio come tale operazione avvenga, partiamo dal considerare la totalità del sistema. Sì avrà che:
+\begin{gather*}
+\ket{\varphi_1} = \ket{\psi} \otimes \ket{\Phi^+}=\\
+=(\alpha \ket{0} + \beta \ket{1}) \otimes \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+\end{gather*}
+
+Dalla precedente equazione, andando a distribuire i due qubit entangled, uno alla sorgente (\(s\)) ed uno alla destinazione (\(d\)), è più intuitivo scrivere il precedente stato come:
+\begin{gather*}
+\ket{\varphi_1} = \frac{1}{\sqrt{2}}(\alpha \ket{0_\psi 0_A}_s \otimes \ket{0_B}_d + \alpha \ket{0_\psi 1_A} \otimes \ket{1_B}_d + \beta \ket{1_\psi 0_A}_s \otimes \ket{0_B}_d +  \ket{1_\psi 1_A}_s \otimes \ket{1_B}_d)=\\
+=\frac{1}{\sqrt{2}}(\alpha \ket{0 0}_s \otimes \ket{0}_d + \alpha \ket{0 1} \otimes \ket{1}_d + \beta \ket{1 0}_s \otimes \ket{0}_d +  \ket{1 1}_s \otimes \ket{1}_d)
+\end{gather*}
+
+\begin{info}
+La prima scrittura aiuta a capire come e dove si trovano i qubit che andremo a considerare ed il loro ordine. Mentre la seconda è la scrittura che andremo poi ad utilizzare nei prossimi calcoli, quindi, tenere bene a mente il sistema appena incontrato.
+\end{info}
+
+Considerando adesso, solo il passaggio per la prima C-Not tra \(\ket{\psi}\) e \(\ket{A}\), si avrà il seguente stato:
+
+\begin{gather*}
+\ket{\varphi_2} = \frac{1}{\sqrt{2}}(\alpha \ket{0 0}_s \otimes \ket{0}_d + \alpha \ket{0 1} \otimes \ket{1}_d + \beta \ket{1 1}_s \otimes \ket{0}_d +  \ket{1 0}_s \otimes \ket{1}_d)
+\end{gather*}
+
+Andando poi ad applicare la porta di Hadamard su \(\ket{\psi}\), si ottiene:
+\begin{equation*}
+\begin{aligned}
+\ket{\varphi_3} = \frac{1}{\sqrt{2}}\Big[
+& \alpha \left(\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \otimes \ket{0}_s \otimes \ket{0}_d\right) \\
++ & \alpha \left(\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \otimes \ket{1}_s \otimes \ket{1}_d\right) \\
++ & \alpha \left(\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \otimes \ket{1}_s \otimes \ket{0}_d\right) \\
++ & \alpha \left(\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \otimes \ket{0}_s \otimes \ket{1}_d\right)
+\Big]
+\end{aligned}
+\end{equation*}
+
+Andando ad effettuare dei passaggi algebrici, si ottiene:
+\begin{equation*}
+\begin{aligned}
+\ket{\varphi_3} = \frac{1}{2} \Big[
+& \alpha (\ket{00}_s + \ket{10}_s) \otimes \ket{0}_d + \alpha (\ket{01}_s + \ket{11}_s) \otimes \ket{1}_d \\
++ & \beta (\ket{01}_s - \ket{11}_s) \otimes \ket{0}_d + \beta (\ket{00}_s - \ket{10}_s) \otimes \ket{1}_d
+\Big]
+\end{aligned}
+\end{equation*}
+
+Tale formula permette di capire che, andando a misurare i due qubit alla sorgente, psso trovarmi in 4 differenti situazioni:
+\begin{itemize}
+    \item \textbf{Risultato \(\ket{00}_s\)}: Si otterrebbe che il Qubit a destinazione sarebbe:
+    \[
+    \ket{B} = \alpha \ket{0}_d + \beta \ket{1}_d
+    \]
+    Che essendo uguale a \(\ket{\psi}\) iniziale, non richiede alcuna correzione
+
+    \item \textbf{Risultato \(\ket{\ket{01}}_s\)}: Si otterrebbe che il Qubit a destinazione sarebbe:
+    \[
+    \ket{B} = \alpha \ket{1}_d + \beta \ket{0}_d
+    \]
+    Che mediante il passaggio per una gate \(X\), otterrà esattamente lo stato \(\ket{\psi}\) finale
+    
+    \item \textbf{Risultato \(\ket{10}_s\)}: Si otterebbe che il Qubit a destinazione sarebbe:
+    \[
+    \ket{B} = \alpha \ket{0}_d - \beta \ket{1}_d
+    \]
+    Tale stato richiede l'applicazione di una gate \(Z\) per aggiustare lo stato e farlo combaciare con \(\ket{\psi}\)
+
+    \item \textbf{Risultato \(\ket{11}_s\)}: Si otterebbe che il Qubit a destinazione sarebbe:
+    \[
+    \ket{B} = \alpha \ket{1}_d - \beta \ket{0}_d
+    \]
+    Tale stato richiede sia l'applicazione di una gate \(X\) sia di una gate \(Z\) per rendere lo stato uguale a \(\ket{\psi}\)
+\end{itemize}
+
+Infine, quindi, considerando i precedenti casi possiamo dire che il risultato della misura effettuata sul |ubit sorgente \(\ket{\psi}\) andrà a pilorare una gate \(Z\) sulla destinazione, mentre il risultato di misura sul qubit \(\ket{A}\) andrà a pilotare una gate \(X\) sulla destinazione. Questo produce quella che è la comunicazione classica necessaria per il trasferimento del Qubit di informazione. Ottenendo così quella che è la parte finale del circuito quantistico presentato allafigura [\ref{img:quantum-teleportation}].
+
+Come per le comunicazioni precedenti, la quantum teleportation richiede, quindi, un canale classico ed una coppia EPR, che sarà "esaurita" per il teleporting del Qubit tra i due sistemi. Il vantaggio è che non si utilizza la comunicazione quantistica per trasmettere informazioni che poi saranno usate nel mondo classico, ma si utilizza la comunicazione quantistica per il teleporting di un Qubit effettivo di informazione. 
+
+Per distribuire l'entanglement su maggiori distanze, quello che si può fare è andare ad effettuare l'entanglement distribution lungo il collegamento tra alice e Bob sfruttando i Quantum Repeater. Tali quantum repeater possono, mediante entanglement swapping, andare ad allacciare due diverse linee, molto distanti tra di loro, com l'entanglement. Per questa parte controllare meglio nei capitoli precedenti. 
+
+Uno dei contro maggiori è che la quantum teleportation ipotizza che il canale di comunicazione sia non rumoroso, ma questo non è mai vero nella realtà. 
