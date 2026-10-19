@@ -1,176 +1,359 @@
 \section{Density Operator}
-Prima di affrontare il discorso legato al \textbf{density operator} è importante approfondire quella che è una matrice di proiezione.
+Il \textbf{density operator} (o operatore di densità) permette di esprimere lo stato di un sistema quantistico in modo diverso rispetto ai vettori di stato visti finora. Per gli stati puri tale rappresentazione è equivalente a quella dei vettori di stato, ma è più generale, perché permette di
+descrivere anche gli \textbf{stati misti}, che non sono rappresentabili da un singolo vettore di stato. Uno dei concetti fondamentali per introdurre l'operatore di densità è quello di \textbf{ensemble of quantum states} (o insieme di stati quantistici). Una volta compresa la definizione e le proprietà dell'operatore di densità, si andranno a \textbf{riformulare i postulati della meccanica quantistica} (come visto nella fase iniziale di
+questi appunti).
+
+\subsection{Ensemble of quantum states e traccia parziale}
+Un \textbf{ensemble of quantum states} descrive una situazione in cui non conosciamo con certezza lo stato in cui il sistema è stato preparato: il sistema si trova in uno stato \(\ket{\psi_i}\) con probabilità \(p_i\). Si tratta di un'incertezza \emph{classica}, dovuta alla nostra ignoranza, e non dell'incertezza quantistica legata alla sovrapposizione. Un ensemble di stati puri è indicato come \(\{p_i, \ket{\psi_i}\}\).
+
+Da tale concetto si definisce l'operatore di densità come:
+\begin{gather*}
+\rho = \sum_i p_i \ket{\psi_i}\bra{\psi_i}
+\end{gather*}
+
+Uno stato descritto da un operatore di densità che non è riconducibile a un singolo stato puro è detto \textbf{stato misto}. Uno stato misto può nascere o da un'ensemble statistica di stati puri, oppure considerando un sottosistema di un sistema composto più grande in uno stato entangled (questo secondo caso sarà chiarito più avanti).
+
+Nel caso in cui volessimo descrivere uno stato puro mediante l'utilizzo della density matrix (equivalente al density operator), ci troveremmo nel caso in cui lo stato puro è uno solo con probabilità 1. Di conseguenza si avrà che:
+\begin{gather*}
+\rho = \ket{\psi}\bra{\psi}
+\end{gather*}
+
+Facendo un esempio, considerando un qubit preparato nello stato puro \(\ket{\psi} = \alpha \ket{0} + \beta \ket{1}\), si avrà che:
+\begin{gather*}
+\rho = \ket{\psi}\bra{\psi}=(\alpha \ket{0} + \beta \ket{1})(\alpha^* \bra{0} + \beta^* \bra{1})=\\
+= |\alpha|^2 \ket{0}\bra{0} + \alpha \beta^* \ket{0}\bra{1} + \alpha^* \beta \ket{1}\bra{0} + |\beta|^2 \ket{1}\bra{1}
+\end{gather*}
+
+L'operatore di densità agisce a tutti gli effetti come un \textbf{proiettore}, ovvero un operatore che è in grado di "proiettare" uno stato a più dimensioni in uno stato a dimensione ridotta, senza alterarne le componenti.
 
 \begin{info}
-\textbf{Projection Operator}\\
-Una proiezione su uno spazio vettoriale \(\mathbb{V}\) è un operatore lineare \(P:\mathbb{V} \rightarrow \mathbb{V}\) tale per cui \(P^2=P\).
-Se \(\mathbb{V}\) è uno spazio di Hilbert, può essere utilizzato il concetto di ortogonalità. Una proiezione \(P\) su uno spazio di Hilbert \(\mathbb{V}\) è detta ortogonale se soddisfa la seguente proprietà:
-\[
-<P x,y> = <x,P y>, \forall x,y \in \mathbb{V}
-\]
-Una proiezione sullo spazio di Hilbert che non è ortogonale è chiamata anche \textbf{proiezione obliqua}(citata solo 
-per conoscenza e completezza).\\
-\\
-\textbf{Matrice di Proiezione}\\
-La matrice di proiezione è una matrice quadrata che gode della proprietà elencata prima, ovvero: \(P^2=P\) (dove il prodotto tra due matrici è il prodotto riga per colonna).
-Si definisce anche \textbf{matrice di proiezione ortogonale} se: \(P^2=P=P^T\) nel caso di spazi vettoriali reali, mentre nel caso di spazi vettoriali complessi si avrà \(P^2 = P = P^\dagger\).
-
-Se la matrice di proiezione non è una matrice di proiezione ortogonale allora si dice \textbf{matrice di proiezione obliqua}.
-
-Una conseguenza delle matrici di proiezione che sono matrici di proiezione ortogonale è che tutti gli autovalori associati saranno 1 e 0 con diversi gradi di molteplicità algebrica
-\end{info}
-
-
-L'\textbf{operatore di densità} è un modo alternativo di rappresentare gli stati e di formulare i postulati della meccanica quantistica. Tale strumento permette di poter esprimere meglio la gestione di alcuni scenari comuni nella meccanica quantistica. Una delle cose principali da capire è l'\textbf{ensembles of quantum states} (insiemi di stati quantistici), tale teoria ha come base quello presentato nella precedente sezione, ovvero, che uno stato quantistico non è detto sia puro, poichè non sarà possibile avere a propria disposizione lo stato di tutto il sistema, ma sarà misto, e quindi, confinato ad uno specifico sottositema. Dati quindi, gli stati \(\ket{\psi_i}\) in cui il sistema può trovarsi e \(p_i\) probabilità di trovarsi nell'\(i\)-esimo stato. Si chiamerà insieme di stati puri il duo: \(\{p_i,\ket{\psi_i}\}\). L'operatore di densità (o matrice di densità), sarà quindi definibile come:
+\textbf{Operatore di Proiezione}(O Projection Operator)\\
+Un proiettore ortogonale è un operatore Hermitiano idempotente che agendo su un elemento di uno spazio di Hilbert lo mappa su un sottospazio associato.
+Formalmente, un proiettore è un operatore che agisce su un vettore dello spazio di Hilbert \(\mathcal{H}\) di dimensione \(N\), trasformandolo nella sua componente appartenente al sottospazio \(\hat{\mathcal{H}} \subseteq \mathcal{H}\) di dimensione \(M\). Sia \(\{\ket{1},\ket{2},\ket{3},\dots, \ket{N}\}\) una base ortonormale di \(\mathcal{H}\) e sia \(\hat{\mathcal{H}}\) il sottospazio generato dai vettori \(\{\ket{1}, \ket{2}, \ket{3}, \dots, \ket{M}\}\), il proiettore su tale sottospazio è:
 \begin{gather*}
-\rho = \sum_{i} p_i \ket{\psi_i} \bra{\psi_i}
+P=\sum_{i=1}^{M}\ket{i}\bra{i}
 \end{gather*}
 
-Con tale definizione sarà possibile andare a riformulare anche quelli che sono i postulati stessi della meccanica quantistica, andando a spiegare anche quando tale notazione sia utile. 
+Un operatore M è detto \textbf{normale} se \(M M^\dagger = M^\dagger M\). Sono normali, ad esempio, gli operatori hermitiani e gli operatori unitari, per i quali vale \(U U^\dagger = I = U^\dagger U\).
 
-\subsubsection{Legge di Shrodinger}
-Quella che deriva dal quarto postulato della meccanica quantistica spiegando che l'evoluzione di un sistema quantistico è definito da matrici unitarie. Definendo quindi l'operatore unitario \(U\), considerando che inizialmente lo stato è \({p_i, \ket{\psi_i}}\), allora applicando l'evoluzione unitaria si avrà:
-\(\ket{\psi_i} \rightarrow U \ket{\psi_i}\), dove la probabilità non è cambiata, quindi il nuovo stato sarà definito come: \(\{p_i, U \ket{\psi_i}\}\), quindi la probailità non cambia, andando ad analizzare quello che succede matematicamente, si avrà:
-
-\begin{gather*}
-\rho=\sum_{i} p_i \ket{\psi_i}\bra{\psi_i} \overset{U}{\longrightarrow} \sum_{i} p_i U \ket{\psi_i}\bra{\psi_i}U^\dagger = U \rho U^\dagger
-\end{gather*}
-
-\subsubsection{Postulato della misura}
-Il postulato della misura è descrivibile mediente il linguaggio dell'operatore di densità. Supponiamo di effettuare una misurazione descritta da un operatore di misura \(M_m\). 
-
-\begin{info}
-\textbf{Proiettori degli autostati}\\
-Dato un osservabile A ed i suoi autostati \(\{\ket{a_j}\}\) si introducono i proiettori su tali autostati come:
-\begin{gather*}
-M_j = \ket{a_j}\bra{a_j}
-\end{gather*}
-
-Un proiettore si dice \textbf{Hermitiano idempotente} quando soddisfa la proprietà tale per cui:
-\begin{gather*}
-P^2=P=P^\dagger
-\end{gather*}
-
-Queste sono esattamente le proprietà presentate precedentemente per l'operatore di densità ortogonale (Hermitiano + Idempotente).
-
-Nei nostri casi, ad esempio, misurando l'osservabile \(Z\), i cui autostati sono \(\{\ket{0},\ket{1}\}\), si avrà che sarà possibile definire i seguenti due proiettori:
-\begin{gather*}
-M_0 = \ket{0}\bra{0} =
-\left[\begin{smallmatrix}
-1 & 0 \\
-0 & 0
-\end{smallmatrix}\right] \\
-M_1 = \ket{1}\bra{1} =
-\left[\begin{smallmatrix}
-0 & 0 \\
-0 & 1
-\end{smallmatrix}\right]
-\end{gather*}
-
-Come visto anche in precedenza, essendo tale operatore ortonormale si avrà che i suoi autovalori saranno 0 ed 1.
-
-Date queste nozioni, sarà quindi definibile come proiettore, un operatore unitario che aisce su un vettore di uno spazio vettoriale di Hilbert \(\mathcal{H}\) di dimensione \(N\), trasformandolo nella sua componente appartenente ad un sottospazio \(\hat{\mathcal{H}} \in \mathcal{H}\) di dimensione \(M\). Sia \(\{\ket{1}, \ket{2}, \dots, \ket{N}\}\) una base ortonormale di \(\mathcal{H}\) e sia \(\hat{\mathcal{H}}\) il sottospazio generato dai vettori \(\{\ket{1}, \ket{2}, \dots, \ket{M}\}\), il proiettore su tale stato è:
-\begin{gather*}
-P=\sum_{i=1}^{M} \ket{j}\bra{j}
-\end{gather*}
-
-Un operatore \(M\) è detto \textbf{normale} se: \(M M^\dagger = M^\dagger M\). Ma gli operatori unitari godono della proprietà per cui: \(U U^\dagger = I = U^\dagger U\). 
-
-Gli operatori normali giocano un ruolo fondamentale per il teorema della decomposizione spettrale. Ogni operatore normale \(M\) su un vettore \(V\) è diagonale rispetto a qualche base ortogonale per \(V\). Di conseguenza, ogni operatore diagonalizzabile è normale. Questo significa che \(M\) può essere scritto come \(M=\sum_{i} \lambda_i \ket{i}\bra{i}\) dove i \(\lambda_i\) sono gli autovalori di \(M\), \(\{\ket{i}\}\) è una base ortogonale per \(V\), e ogni \(\ket{i}\) è un autovettore di \(M\) con autovalore \(\lambda_i\). Tali proiettori soddisfano la relazione di completezza, ovvero:
+Gli operatori normali giocano un ruolo fondamentale per il teorema della decomposizione spettrale. Ogni operatore normale \(M\) su uno spazio vettoriale \(V\) è diagonale rispetto a qualche base ortonormale per \(V\). Viceversa, ogni operatore diagonalizzabile mediante una base ortonormale è normale. Questo significa che \(M\) può essere scritto come \(M=\sum_{i} \lambda_i \ket{i}\bra{i}\) dove i \(\lambda_i\) sono gli autovalori di \(M\), \(\{\ket{i}\}\) è una base ortonormale per \(V\), e ogni \(\ket{i}\) è un autovettore di \(M\) con autovalore \(\lambda_i\). I proiettori \(P_i=\ket{i}\bra{i}\) che compaiono in tale decomposizione soddisfano la relazione di completezza, ovvero:
 \begin{gather*}
 \sum_{i} P_i = I
 \end{gather*}
+
+Un \textbf{proiettore}, però, ha di per se diverse caratteristiche che lo definiscono. Di base un proiettore è definito tale se gode della proprietà secondo cui \(P^2=P\) (proprietà di \textbf{idempotenza}). In aggiunta a tale proprietà vi è da considerare quella legata all'\textbf{ortogonalità}, secondo cui \(P=P^\dagger\) (nel caso dei proiettori ortogonali). Di conseguenza si può dire che un proiettore ortogonale è un \textbf{hermitiano idempotente} se gode della proprietà per cui:
+
+\begin{gather*}
+P^2 = P = P^\dagger
+\end{gather*}
+
+E quindi godrà sia della proprietà di ortogonalità che di idempotenza. Una conseguenza delle matrici (o operatori) di \textbf{proiezione ortogonale} è che tutti gli autovalori associati saranno o uguali a 0 o ad 1 con diversi gradi di molteplicità algebrica.
+
+\begin{warn}
+Un proiettore è sempre idempotente data la sua definizione (altrimenti non sarebbe un proiettore), mentre la condizione di ortogonalità non è sempre verificata, infatti, tutte le volte che si ha ache fare con proiettori non ortogonali questi si dicono \textbf{proiezioni oblique}
+\end{warn}
 \end{info}
 
 \begin{info}
-L'uguaglianza segue dalla definizione di traccia,
-$\operatorname{tr}(B)=\sum_k \bra{k}B\ket{k}$, calcolata in una base
-ortonormale $\{\ket{k}\}$, e dalla relazione di completezza
-$\sum_k \ket{k}\bra{k}=I$. Posto $A=M_m^\dagger M_m$, si ha
-\begin{align*}
-\operatorname{tr}\left(A\ket{\psi_i}\bra{\psi_i}\right)
-  &= \sum_k \bra{k}A\ket{\psi_i}\braket{\psi_i | k} \\
-  &= \sum_k \braket{\psi_i|k}\bra{k}A\ket{\psi_i} \\
-  &= \bra{\psi_i}\Big(\sum_k \ket{k}\bra{k}\Big)A\ket{\psi_i}
-   = \bra{\psi_i}A\ket{\psi_i},
-\end{align*}
-dove nel secondo passaggio si sono scambiati due scalari. Equivalentemente,
-è un'applicazione della ciclicità della traccia,
-$\operatorname{tr}(XY)=\operatorname{tr}(YX)$, con $X=A\ket{\psi_i}$ e
-$Y=\bra{\psi_i}$, tenendo conto che la traccia di uno scalare è lo scalare
-stesso.
+\textbf{Proiettori degli autostati}\\
+Seguendo quello presentato precedentemente sui \textbf{proiettori}, segue la seguente definizione.
+Dato un osservabile \(A\) ed i suoi autostati \(\{\ket{a_j}\}\), si definiranno proiettori su tali autostati le matrici:
+\begin{gather*}
+M_j = \ket{a_j} \bra{a_j}
+\end{gather*}
+
+Per esempio, considerando l'osservabile \(Z\), esso ha come autostati i vettori \(\{\ket{0}, \ket{1}\}\), di conseguenza i proiettori valutati su tali autostati saranno:
+\begin{gather*}
+M_0 = \ket{0}\bra{0} = 
+\left[\begin{smallmatrix}
+1 & 0\\
+0 & 0       
+\end{smallmatrix}\right]\\
+M_1 = \ket{1}\bra{1}=
+\left[\begin{smallmatrix}
+0 & 0 \\
+0 & 1 
+\end{smallmatrix}\right]
+\end{gather*}
 \end{info}
 
-Laprobabilità che, quindi, misurando l'osservabile \(A\) a partire dallo stato \(\ket{\psi}\) il sistema si porti nello stato \(\ket{a_j}\) è data da:
+\begin{info}
+\textbf{Traccia di una matrice}\\
+La traccia di una matrice è una funzione lineare che calcola la somma degli elementi della diagonale principale di una matrice. La traccia, seguendo la notazione braket, può essere scritta come:
 \begin{gather*}
-p_j=Tr\left(M_j\rho\right)
+tr(B) = \sum_{k} \bra{k} B \ket{k}
+\end{gather*}
+Che viene valutata su una base ortonormale \(\{\ket{k}\}\) (è indipedente dalla base secondo cui si valuti).
+Se si considera che \(\sum_{k}\ket{k}\bra{k} = I\), si ottiene:
+\begin{align*}
+tr(A\ket{\psi}_i \bra{\psi_i}) &= \sum_{k}\bra{k}A\ket{\psi_i}\braket{\psi_i | k}\\
+       &= \sum_{k} \braket{\psi_i | k}\bra{k}A\ket{\psi_i}\\
+       &=\bra{\psi_i}\left(\sum_{k} \ket{k}\bra{k}\right) A \ket{\psi_i} = \bra{\psi_i} A \ket{\psi_i}
+\end{align*}
+dove nel secondo passaggio si sono scambiati due scalari. Equivalentemente, è un’applicazione della ciclicità della traccia, \(tr(XY ) = tr(Y X)\), con \(X = A \ket{\psi_i}\) e \(Y = \bra{\psi_i}\), tenendo conto che la traccia di uno scalare è lo scalare stesso.
+\end{info}
+Completata quella che è un introduzione puramente matematica degli stumenti che saranno utilizzati si va ad approfondire come questi debbano coesistere. La \textbf{traccia di una matrice} ci serve a determinare la probabilità che, misurando \(A\) a partire dallo stato \(\ket{\psi}\), il sistema si porti nello stato \(\ket{a_j}\). Questa è determinabile mediante la formula:
+\begin{gather*}
+p_j = Tr\left(M_j \rho\right)
+\end{gather*}
+Per dimostrare tale relazione si eseguono i passaggi:
+\begin{gather*}
+Tr\left(M_j \rho\right) = \sum_{k}\bra{a_k}M_j \rho \ket{a_j} = \sum_{k}\bra{a_k}\ket{a_j}\bra{a_j}\ket{\psi}\bra{\psi}\ket{a_k} = b_j b_j^* = |b_j|^2
+\end{gather*} 
+Questo accade dato che il termine \(\bra{a_k}\ket{a_j} = \delta_{kj}\) e che quindi tale sommatoria risulti poi:
+\begin{gather*}
+\bra{a_j}\ket{\psi}\bra{\psi}\ket{a_j} = b_j b_j^* = |b_j|^2
 \end{gather*}
 
-La dimostrazione di tale proprietà è una conseguenza diretta:
+Tale dimostrazione è generalizzabile anche per stati misti, il termine \(b_j\) è la "proiezione" del vettore \(\ket{\psi}\) sul vettore di base \(\ket{a_j}\), il che rappresenterà, per definizione, la probabilità di poter trovare come uscita del risultato di misura lo stesso vettore \(\ket{a_j}\). 
+
+Per vedere praticamente come tale funzione lavori, consideriamo lo stato puro che è stato espresso precedentemente, quindi consideriamo:
 \begin{gather*}
-Tr\left(M_j\rho\right) = \sum_{k}\bra{a_k}M_j \rho \ket{a_k} = \sum_{k}\bra{a_k}\ket{a_j}\bra{a_j}\ket{\psi}\bra{\psi}\ket{a_k} =\\
-=b_j b_j^* = |b_j|^2
+\rho = \ket{\psi}\bra{\psi}=(\alpha \ket{0} + \beta \ket{1})(\alpha^* \bra{0} + \beta^* \bra{1})=\\
+= |\alpha|^2 \ket{0}\bra{0} + \alpha \beta^* \ket{0}\bra{1} + \alpha^* \beta \ket{1}\bra{0} + |\beta|^2 \ket{1}\bra{1} = \left[\begin{smallmatrix}
+|\alpha|^2 & \alpha \beta^* \\
+\alpha^* \beta & |\beta|^2
+\end{smallmatrix}\right]
 \end{gather*}
 
-Dove il termine \(\bra{a_k} \ket{a_j} \ne 0 \iff k=j\), e quindi, dato che siamo con una base ortonormale, \(\bra{a_k} \ket{a_k} = 1\), di conseguenza si avrà:
+Dato che si vuole la probabilità di uscita di \(\ket{0}\), considerando la sua matrice di proiezione:
 \begin{gather*}
-\bra{a_k} \ket{\psi} \bra{\psi} \ket{a_k} = b_k b_k^* = |b_k|^2
+M_0 = \left[\begin{smallmatrix}
+1 & 0 \\
+0 & 0
+\end{smallmatrix}\right]
 \end{gather*}
-Dato che stiamo andando a filtrare la \(k\)-esima componente del vettore \(\ket{\psi}\) mappata sul autovettore \(\ket{a_k}\). Ottenendo di conseguenza la relazione.
 
-\subsubsection{Caratteristiche del density operator}
-Il density operator gode di diverse proprietà:
+Sì vuole valutare la probabilità di uscita del vettore \(\ket{0}\), si avrà che:
+\begin{gather*}
+p_0 = Tr(M_0 \rho) = Tr\left(
+\left[\begin{smallmatrix}
+1 & 0 \\
+0 & 0
+\end{smallmatrix}\right]
+\left[\begin{smallmatrix}
+|\alpha|^2 & \alpha \beta^* \\
+\alpha^* \beta & |\beta|^2
+\end{smallmatrix}\right]
+\right) = Tr\left(\left[\begin{smallmatrix}
+|\alpha|^2 & \alpha \beta^* \\
+0 & 0
+\end{smallmatrix}\right]\right) = |\alpha|^2
+\end{gather*}
+
+Che è esattamente quello che ci aspettavamo dato lo stato puro iniziale. Lo stesso varrà per il caso di \(\ket{1}\). 
+
+\newpage
+\begin{info}
+\textbf{Proprietà dell'operatore di densità}\\
+L'operatore di densità, date tutte le premesse fatte e la sua definizione, godrà delle seguenti proprietà:
 \begin{itemize}
-       \item \(\rho\) è Hermitiano, quindi: \(\rho = \rho^\dagger\)
-       \item Traccia unitaria: \(Tr(\rho) = 1\)\\
-       Tale proprietà è dimostrabile mediantei seguenti passaggi:
-       \[
-       Tr(\rho) = \sum_{k} \bra{k} \rho \ket{k} = \sum_{k} \sum_{i} p_i \bra{k}\ket{\psi_i}\bra{\psi_i}\ket{k} =
-       \sum_{i}p_i \bra{\psi_i} \sum_{k}\ket{k}\bra{k}\ket{\psi_i} =
-       \sum_{i}p_i = 1
-       \]
-       o equivalentemente:
-       \[
-       Tr(\rho) = Tr(\sum_{i}p_i\ket{\psi_i}\bra{\psi_i})=
-       \sum_{i}p_i Tr(\ket{\psi_i}\bra{\psi_i})=
-       \sum_{i} p_i = 1
-       \]
+       \item \textbf{Operatore Hermitiano}: \(\rho = \rho^\dagger\)
+       
+       \item \textbf{Traccia Unitaria}: \(Tr(\rho) = 1\).\\
+       Tale proprietà è dimostrabile seguendo i passaggi:
+       \begin{align*}
+              Tr(\rho)=\sum_{k} \bra{k}\rho\ket{k}&=\sum_{k}\sum_{i}p_i \bra{k}\ket{\psi_i}\bra{\psi_i}\ket{k}\\
+              &= \sum_{i}p_i \bra{\psi_i}\sum_{k}\ket{k}\bra{k}\ket{\psi_i}\\
+              &=\sum_{i} p_i = 1
+       \end{align*}
+       Dove nel secondo passaggio si sono invertiti i due "scalari" che si sarebbero formati dai prodotti scalari tra i vettori.
 
-       \item \(\rho\) è semidefinito positivo, ovvero:
-       \[
-       \bra{\psi}\rho\ket{\psi} \ge 0, \forall \ket{\psi}
-       \]
-       Tale proprietà discende dal fatto che gli autovalori di \(\rho\) sono tutti reali (essendo \(\rho\) Hermitiano) e non-negativi, quindi dalla condizione: \(Tr(\rho) = 1, 0 \le \lambda_i \le 1\).
-
-       La dimostrazione di tale proprietà discende dalla definizione data precedentemente:
-       \[
-       \bra{\varphi}\rho\ket{\varphi} = \sum_{i}p_i\braket{\varphi | \psi_i}\braket{\psi_i | \varphi}=\sum_{i} p_i |\braket{\varphi | \psi_i}|^2 \ge 0
-       \]
-       Dato che \(p_i\) essendo una probabilità non potrà essere mai zero. Lo stesso valer per il modulo del numero complesso ottenuto.
-
-       Se supponiamo che \(\rho\) è un operatore che soddisfa le condizioni di traccia e di positività, si avrà che:
-       \[
-       \rho=\sum_{j}\lambda_j \ket{j}\bra{j}
-       \]
-       dove i vettori \(\ket{j}\) sono ortogonali e i \(\lambda_i\) sono autovalori reali e non-negativi di \(\rho\).
+       \item \textbf{Semidefinita positiva}: \(\bra{\psi}\rho \ket{\psi} \ge 0, \forall \ket{\psi}\)\\
+       Tale proprietà discende dal fatto che gli autovalori di \(\rho\) sono tutti reali e non-negativi. Vista anche la proprietà per cui \(Tr(\rho)=1\), si avrà che \(0 \le \lambda_i \le 1\). Per dimostrare tale cosa seguono i passaggi, per cui:
+       \begin{align*}
+              \bra{\varphi}\rho\ket{\varphi} &=\sum_{i} p_i \bra{\varphi} \ket{\psi_i}\bra{\psi_i}\ket{\varphi}\\
+              &= \sum_{i} p_i |\bra{\varphi}\ket{\psi_i}|^2 \ge 0
+       \end{align*}
+       Mentre, per il secondo caso, si andrà a considerare la proprietà per cui \(Tr(\rho)=1\). Supponendo che \(\rho\) è un operatore che soddisfa le condizioni di traccia e di positività. Dato che \(\rho\) è positivo, avrà una decomposizione spettrale del tipo:
+       \begin{gather*}
+       \rho = \sum_{j}\lambda_j \ket{j}\bra{j}
+       \end{gather*}
+       Dove i vettori \(\ket{j}\) sono ortogonali e i \(\lambda_j\) sono gli autovalori reali e non negativi di \(\rho\).
+       Dalla condizione di traccia possiamo quindi vedere che \(\sum_{j}\lambda_j = 1\). Quindi, un sistema si troverà nello stato \(\ket{j}\) con probabilità \(\lambda_j\). Questo è l'insieme \(\{\lambda_j, \ket{j}\}\) che è un insieme di stati che danno origine all'operatore di densità \(\rho\). Ciò basta per dire che il valore che ogni \(\lambda_j\) deve avere rispetterà la relazione: \(0 \le \lambda_j \le 1\). 
 \end{itemize}
+\end{info}
 
-Per uno stato puro \(\ket{x}\), l'operatore di densità \(\rho_x^X=\ket{x}\bra{x}\) ha una forma perticolarmente semplice. Se consideriamo che \(\ket{x}\) è l'i-esimo elemento di una base ortonormale, allora \(\ket{x}\) è il vettore della base con tutti 0 ed un solo 1 nella i-esima posizione. Di conseguenza, il prodotto \(\ket{x}\bra{x}\) sarà uguale ad una matrice composta da tutti 0 e con un solo 1 presente sulla diagonale alla posizione \(ii\). Segue quindi la proprietà che l'operatore di densità di uno stato puro è un proiettore di quest'ultimo, ovvero: \(\rho_x^X \rho_x^X = \rho_x^X\). Contrariamente, ogni operatore di densità che è un proiettore corrisponde ad uno stato puro: operatori di proiezione hanno solo 0 ed 1 come autovalori, e per ottenere la traccia uguale ad 1, l'operatore di densità avrà un solo ed unico autovettore, che corrisponderà allo stato puro di quell'operatore.
+\begin{info}
+\begin{itemize}
+ \item \textbf{Traccia del quadrato}: \(Tr(\rho) \le 1\).\\
+       Tale proprietà ci permette di capire che l'operatore di densità si comporta come un proiettore (\(\rho^2=\rho\)) solo quando lo stato è puro, in quel caso varra la condizione \(Tr(\rho^2) = Tr(\rho) = 1\). Ma quando si parla di stati misti la condizione sarà \(Tr(\rho^2)<1\) Questo perchè, essendo presenti sulla diagonale principale le probabilità di trovarsi nei vari stati, e quindi valori che sono compresi tra 0 ed 1, quando questi vengono elevati al quadrato, allora, diverranno ancora più piccoli, dimostrando la relazione. Matematicamente, considerando la traccia della matrice \(\rho^2\), avremo che:
+       \begin{gather*}
+              Tr(\rho^2)=\sum_{i}\lambda_i^2
+       \end{gather*}
+       Sapendo che \(\sum_{i}\lambda_i = 1\) e che quindi \(0 \le \lambda_i \le 1\), la dimostrazione è verificata.
 
-Nel caso in cui mi trovi in degli stati misti, invece, l'operatore di densità, sulla diagonale, non avrà tutti 1 e 0, questo si dice che lo stato si un misto di diversi stati puri nell'insieme per \(\rho\). Uno stato puro, quindi, soddisfa il criterio per cui \(tr(\rho^2)=1\) questo perchè avendo un solo 1 sulla diagonale, il risultato è "ovvio". Mentre nel caso in cui ci sia uno stato misto, si avrà che \(tr(\rho^2) < 1\), questo perchè la somma degli autovalori \(\lambda_j\) sulla diagonale è uguale ad 1, ma questo impone che tali valori siano \(0 \le \lambda_j \le 1\), di conseguenza si avrebbe che la traccia sia definita come: \(Tr(\rho^2)=\sum_{i}\lambda_i^2 < 1\). Quindi, dato un operatore di densità \(\rho\), la decomposizione \(\rho=\sum_{i} p_i \ket{\psi_i}\bra{\psi_i}\) non è unica. 
+       \item \textbf{Decomposizione non univoca}: Data la matrice \(\rho\) la decomposizione:
+       \begin{gather*}
+              \rho = \sum_{i}p_i \ket{\psi}\bra{\psi}       
+       \end{gather*}
+       non è unica. Questo è un problema, dato che diversi insiemi di stati puri mi portano alla stessa espressione della matrice di densità, quindi se lavoro con una carta matrice \(\rho\) non so bene quale set di stati puri me l'abbia generata.
+\end{itemize}
+\end{info}
+
+Per le proprietà presentate precedentemente, facciamo un esempio. Considerando il caso dello stato puro presentato precedentemente, avremo che, dato uno stato puro \(\ket{\psi} = \frac{1}{\sqrt{3}}\ket{0} + \frac{4}{\sqrt{3}} \ket{1}\), si avrà che la matrice di densità potrà essere scritta come:
+\begin{gather*}
+       \rho = \ket{\psi}\bra{\psi}=
+       \left[\begin{smallmatrix}
+       |\alpha|^2 & \alpha \beta^* \\
+       \alpha^* \beta & |\beta|^2        
+       \end{smallmatrix}\right]
+\end{gather*}
+Andando a valutare la traccia, si avrà:
+\begin{gather*}
+       Tr(\rho) = |\alpha|^2 + |\beta|^2 = 1
+\end{gather*}
+Se si va a valutare anche la \(\rho^2\), si ottiene la condizione per cui \(rho^2 = \rho\) e di conseguenza \(Tr(\rho^2) = 1\). 
+
+Se invece, lo stato che andiamo a considerare è misto le cose cambiano. Per esempio, considerando due possibili stati puri in cui il sistema potrà trovarsi, si avrà:
+\begin{gather*}
+\ket{\psi_1} = \sqrt{\frac{1}{3}}\ket{0} + \sqrt{\frac{2}{3}} \ket{1}, p_1 = \frac{1}{2}\\
+\ket{\psi_2} = \sqrt{\frac{1}{3}}\ket{0} - \sqrt{\frac{2}{3}} \ket{1}, p_2 = \frac{1}{2}\\
+\end{gather*}
+
+Andare a ricavare la \(\rho\), servirà applicare la formula per cui:
+\begin{gather*}
+       \rho = \sum_{i}p_i \ket{\psi_i}\bra{\psi_i} = \frac{1}{2}\left(
+       \left[\begin{smallmatrix}
+       \frac{1}{3} & \frac{2}{3}\\
+       \frac{2}{3} & \frac{2}{3}       
+       \end{smallmatrix}\right] + 
+       \left[\begin{smallmatrix}
+       \frac{1}{3} & -\frac{2}{3}\\
+       -\frac{2}{3} & \frac{2}{3}       
+       \end{smallmatrix}\right]
+       \right) =\\
+       =\left[\begin{smallmatrix}
+       \frac{1}{3} & 0\\
+       0 & \frac{2}{3}       
+       \end{smallmatrix}\right] = \frac{1}{3}\ket{0}\bra{0}+\frac{2}{3}\ket{1}\bra{1}
+\end{gather*}
+
+In questo caso, rispetto anche allo stato puro, notiamo che non c'è più una corrispondenza 1 ad 1 con l'insieme di stati puri che ha definito la \(\rho\). Ma questo è normale, altrimenti ci ritroveremmo nel caso di sistemi di stati possibili, mentre nel nostro caso sono incerti. Nonostante tutto, le probabilità, di misurare 1 o 0, rispetto allo stato puro non sono cambiate. 
+
+\begin{info}
+\textbf{Operatore di densità ridotto}\\
+L'operatore di densità ridotto permette di poter restringere il campo di visualizzazione dello stato del sistema ad un sottosistema di quest'ultimo. La cosa interessate è come, poi, si possa andare a controllare tale "stato".
+
+Matematicamente per effettuare tale restringimento si utilizza l'operazione di \textbf{traccia parziale}. A differenza della traccia di una matrice, che restituisce uno scalare, la traccia parziale restituisce una matrice ridotta rispetto a quella originaria. Consideriamo un sistema composto da due sottosistemi \(A\) e \(B\). Se si vuole osservare lo stato, solo del sistema \(A\), allora bisognerà andare ad utilizzare la seguente relazione:
+\begin{gather*}
+\rho^A = tr_B(\rho^{AB}) = tr_B(\rho^A \otimes \rho^B) = \rho^A tr(\rho^B) = \rho^A
+\end{gather*}
+\end{info}
+
+\begin{info}
+\textbf{Definizione formale della traccia parziale}\\
+Data una base \(\{\ket{\alpha_1}, \ket{\alpha_2}, \dots, \ket{\alpha_M}\}\) del sottosistema \(A\), e data una base \(\{\ket{\beta_1}, \ket{\beta_2}, \dots, \ket{\beta_L}\}\) del sottosistema \(B\), possiamo scrivere uno stato del sistema combinato come:
+\begin{gather*}
+\ket{x}=\sum_{i=0}^{M-1}\sum_{j=0}^{L-1}x_{ij}\ket{\alpha_i}\ket{\beta_j}
+\end{gather*}
+
+Una misurazione sul sistema \(A\) è modellata dagli osservabili \(O^A\) con i corrispettivi proiettori \(\{P_i^A\}, 0 \le i \le 2^m\). Sull'intero sistma, quindi, tale misura sarà vista come: \(O^A \otimes I^B\), scrivendolo rispetto ai proiettori, si avrà \(P_i^A \otimes I^B\). Per ogni proiettore oraticolare \(P^A\), \(\bra{x}P^a \otimes I \ket{x}\) cì da la probabilità che una misura di \(\ket{x}\) da \(O^A \otimes I^B\) risulti in uno stato in un sottospazioe associato a \(P^A\). Scrivendo tale probabilità nei termini visti precedentemente si avrà:
+\begin{align*}
+\bra{x} P^A \otimes I \ket{x} &= \left(\sum_{ij}x_{ij}^*\bra{\alpha_i}\otimes\bra{\beta_j}\right)(P^A \otimes I)\left(\sum_{kl}x_{kl}\bra{\alpha_k}\otimes\bra{\beta_l}\right)=\\
+&= \sum_{ijkl}x_{ij}^* x_{kl}\bra{\alpha_i}P^A\ket{\alpha_k}\braket{\beta_j | \beta_l}
+\end{align*}
+Dove gli indici \(i\) e \(k\) vanno da 0 a \(M-1\), mentre j ed l da 0 a \(L-1\). Dato che \(\braket{\beta_j | \beta_l} = \delta_{lj}\), ogni termine sarà nullo esclusi quelli in cui \(j=l\), quindi la probabilità potrà essere riscritta come:
+\begin{align*}
+\bra{x} P^A \otimes I\ket{x}=\sum_{ijk}x_{ij}^*x_{kj}\bra{\alpha_i}P^A\ket{\alpha_k}
+\end{align*}
+Considerando che la base \(\{\alpha_i\}\) di \(A\) è ortonormale (per cui \(\sum_i\ket{\alpha_u}\bra{\alpha_u}=I\)), si avrà:
+
+\begin{align*}
+\bra{x} P^A \otimes I\ket{x}&=\sum_{ijk}x_{ij}^*x_{kj}\bra{\alpha_i}P^A\ket{\alpha_k}\\
+&=\sum_{ik}\sum_j x_{ij}^* x_{kj} \ket{\alpha_i} P^A \left(\sum_u \ket{\alpha_u}\bra{\alpha_u}\right)\ket{\alpha_k}\\
+&=\sum_u\sum_{ik}\sum_j x_{ij}^*x_{kj}\braket{\alpha_u | \alpha_k}\bra{\alpha_i}P^A\ket{\alpha_u}\\
+&=\sum_u \bra{\alpha_u}\left(\sum_{ik}\sum_j x_{ij}^*x_{kj}\ket{\alpha_k}\bra{\alpha_i}P^A\right)\ket{\alpha_u}\\
+&=tr(\rho_x^A P^A)
+\end{align*}
+
+Dove \(\rho_x^A\) è l'operatore di densità dello stato del sistema \(\ket{x}\) sul sottosistema \(A\). Esso si calcola come:
+\begin{gather*}
+\rho_x^A=\sum_{ik}\sum_j x_{ij}^*x_{kj}\ket{\alpha_k}\bra{\alpha_i}
+\end{gather*}
+
+da cui discende la formula:
+\begin{gather*}
+\rho_x^A=tr_B(\ket{x}\bra{x})
+\end{gather*}
+\end{info}
+
+I concetti di matrice di densità ridotto e di sottosistema ci servono per l'analisi degli stati misti. Per esempio, consideriamo un sistema a 2 qubit puro. Tali qubit sono in entanglement tra di loro, e quindi si ritrovano nello stato:
+\begin{gather*}
+\ket{\psi} = \ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
+\end{gather*}
+
+Calcolando l'operatore di densità per gli stati puri si ottiene:
+\begin{align*}
+\rho=\ket{\psi}\bra{\psi} &= \frac{1}{2}(\ket{00} + \ket{11})(\bra{00} + \bra{11})\\
+&=\frac{1}{2}(\ket{00}\bra{00} + \ket{00}\bra{11} + \ket{11}\bra{00} + \ket{11}\bra{11})
+\end{align*}
+
+Ora vorrei conoscere solo lo "stato" del sottosistema associato al primo qubit. Quindi, seguendo quello che c'era scritto prima, bisogna calcolare:
+\begin{gather*}
+\rho_1 = tr_2(\rho) =\frac{1}{2}(tr_2(\ket{00}\bra{00}) + tr_2(\ket{00}\bra{11}) + tr_2(\ket{11}\bra{00}) + tr_2(\ket{11}\bra{11}))
+\end{gather*}
+Valutando i casi io vado ad effettuare i seguenti calcoli:
+\begin{align*}
+tr_2(\ket{0_A}\otimes\ket{0_B} \bra{0_A}\otimes\ket{0_B})=&\\
+=tr_2(\ket{0_A}\bra{0_A} \otimes \ket{0_B}\bra{0_B})&\\
+=tr_2(\rho_A \otimes \rho_B) = \rho_A tr(\rho_B)&\\
+=\ket{0_A}\bra{0_A}\braket{0_B | 0_B} &\\
+= \ket{0_A}\bra{0_A}&
+\end{align*}
+
+Andando a valutare gli altri casi si avrà:
+\begin{align*}
+&tr_2(\ket{00}\otimes\bra{11}) = \ket{0_A}\bra{1_A}\braket{0_B|1_B} = 0\\
+&tr_2(\ket{11}\otimes\bra{00}) = \ket{1_A}\bra{0_A}\braket{1_B|0_B}=0\\
+&tr_2(\ket{00}\otimes\bra{11}) = \ket{1_A}\bra{1_A}\braket{1_B|1_B}=\ket{1_A}\bra{1_A}\\
+\end{align*}
+
+Da cui si ricava che lo stato finale sarà:
+\begin{gather*}
+\rho_A = \frac{1}{2}(\ket{0}\bra{0} + \ket{1}\bra{1}) = \frac{1}{2}I
+\end{gather*}
+
+Dove si vuole far notare che, nonostante fossimo in un caso in cui lo stato non è misto, ma \(Tr(\rho^2)<1\). Questo ci dice che quindi, se uno stato è misto sicuro varrà tale proprietà e non il viceversa (è un implicazione, non un se e solo se). Una cosa curiosa da notare è come lo stato non cambi rispetto ad altre basi:
+\begin{gather*}
+       \rho_A = \frac{1}{2} I\\
+       H \rho_A H = \frac{1}{2}HIH = \frac{1}{2}HH
+       =\frac{1}{2}I
+\end{gather*}
+Quindi anche gli stati \(\ket{+}\) e \(\ket{-}\) sono incerti al \(50\%\), tale stato, infatti, è uno stato massimamente misto, il che porta con se il maggior grado di incertezza possibile.
+
+\begin{warn}
+Solo lo stato massimamente misto non cambia di fronte alla trasformazione di Hadamard, altri stati CAMBIANO. Quindi fate attenzione, la regola non è generale. Questo è un caso particolare. Infatti considerando il caso dello stato puro \(\ket{\psi} = \ket{+} = \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})\), si avrà che:
+\begin{gather*}
+\rho = \ket{\psi}\bra{\psi} = \frac{1}{2}(\ket{0}\bra{0} + \ket{0}\bra{1} + \ket{1}\bra{0} + \ket{1}\bra{1})= \frac{1}{2}\left[\begin{smallmatrix}
+1 & 1\\
+1 & 1
+\end{smallmatrix}\right]
+\end{gather*}
+
+Andando ad applicare la Hadamard:
+\begin{gather*}
+H \rho H = \frac{1}{4}
+\left[\begin{smallmatrix}
+1 & 1 \\
+1 & -1       
+\end{smallmatrix}\right]
+\left[\begin{smallmatrix}
+1 & 1 \\
+1 & 1       
+\end{smallmatrix}\right]
+\left[\begin{smallmatrix}
+1 & 1 \\
+1 & -1       
+\end{smallmatrix}\right]=
+\left[\begin{smallmatrix}
+1 & 0 \\
+0 & 0       
+\end{smallmatrix}\right]=
+\ket{0}\bra{0}
+\end{gather*}
+Che è esattamente lo stato \(\ket{0}\) che è quello che ci aspettiamo dato lo stato iniziale.
+\end{warn}
 
 
-% % Roba Vecchia
-% si definisce come:
-% \[
-% \rho = \sum_{i} p_i \ket{\psi_i}\bra{\psi_i}
-% \]
-
-% Dove il termine \(\rho\) incapsula all'interno della sua struttura sia la probabilità dello stato puro \(p_i\) che lo stato puro stesso \(\ket{\psi_i}\).
-% Per un sistema, invece, dove non andiamo a considerare una sua restrizione, ma un suo stato puro, si avrà:
-% \[
-% \rho = \ket{\psi}\bra{\psi}
-% \]
-% E tutti i postulati della meccanica quantistica possono essere espressi in termini di operatori di densità
-
-
+\input{chapters/chapter-3/1-1-density-principles.tex}
