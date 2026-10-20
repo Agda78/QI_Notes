@@ -356,4 +356,106 @@ Che è esattamente lo stato \(\ket{0}\) che è quello che ci aspettiamo dato lo 
 \end{warn}
 
 
+\begin{info}
+\textbf{Calcolo della matrice parziale}\\
+Un modo semplice con cui è possibile calcolare la matrice parziale è quello di andare a sommare i valori per cuiil primo stato rimane uguale ed il secondo, una volta è completamente nello stato 0 ed una volta completamente nello stato 1. Per capire meglio, si va a considerare una matrice di densità associata a 2 qubit \(\ket{\psi_A} = a \ket{0} + b \ket{1}\) ed un qubit \(\ket{\psi_B} = c \ket{0} + d \ket{1} \) per cui si ha che la matrice di densità:
+
+\begin{align*}
+\rho ={}& |ac|^2\ket{00}\bra{00} + ac(ad)^*\ket{00}\bra{01} + ac(bc)^*\ket{00}\bra{10} + ac(bd)^*\ket{00}\bra{11}\\
+&+ ad(ac)^*\ket{01}\bra{00} + |ad|^2\ket{01}\bra{01} + ad(bc)^*\ket{01}\bra{10} + ad(bd)^*\ket{01}\bra{11}\\
+&+ bc(ac)^*\ket{10}\bra{00} + bc(ad)^*\ket{10}\bra{01} + |bc|^2\ket{10}\bra{10} + bc(bd)^*\ket{10}\bra{11}\\
+&+ bd(ac)^*\ket{11}\bra{00} + bd(ad)^*\ket{11}\bra{01} + bd(bc)^*\ket{11}\bra{10} + |bd|^2\ket{11}\bra{11}
+\end{align*}
+
+In forma matriciale, si avrà:
+\begin{gather*}
+\rho =
+\left(\begin{smallmatrix}
+|a|^2|c|^2 & |a|^2 cd^* & ab^*|c|^2 & ab^*cd^*\\
+|a|^2 c^*d & |a|^2|d|^2 & ab^*c^*d & ab^*|d|^2\\
+a^*b|c|^2 & a^*b\,cd^* & |b|^2|c|^2 & |b|^2cd^*\\
+a^*b\,c^*d & a^*b|d|^2 & |b|^2c^*d & |b|^2|d|^2
+\end{smallmatrix}\right)
+\end{gather*}
+
+Applicando in maniera nominale la formula della matrice parziale, per valutare lo stato del qubit \(\ket{\psi_A}\), come visto anche precedentemente, si avrà che:
+\begin{gather*}
+Tr_B(\ket{0_A 0_B}\bra{0_A 0_B})=Tr_B(\ket{0_A} \otimes \ket{0_B} \bra{0_A} \otimes \bra{0_A})\\
+=Tr_B(\ket{0_A}\bra{0_A} \otimes \ket{0_B} \otimes \bra{0_B}) = Tr_B(\rho_A \otimes \rho_B) = \rho_A Tr(\rho_B)\\
+= \ket{0_A}\bra{0_A}Tr(\ket{0_B}\bra{0_B}) = \ket{0_A}\bra{0_A}
+\end{gather*}
+
+In tale formula \(\rho_A\) e \(\rho_B\) sono due entità definite per parlare di parti appartenenti al sistema \(A\) e parti appartenenti al sistema \(B\). Questo è applicabile per tutti i termini di tale formula. In particolare:
+\begin{gather*}
+Tr(\rho_B) = Tr(\ket{k}\bra{j}) = \braket{k | j} = \delta_{kj}
+\end{gather*}
+Dove \(k\) e \(j\) possono essere solo o 0 o 1.
+Gli elementi finali da sommare, quindi, possono essere visti come delle somme solo per quegli stati per cui, il sistema \(B\) si trova nello stesso "livello", quindi o solo in 0 o solo in 1, per non permettere a quel delta di essere 0. Poi si valuta il sistema \(A\) come solo gli elementi che ricadono nello stesso punto della matrice, che quindi condividono il termine \(\ket{s}\bra{t}\) e che quindi hanno lo stesso \(s\) e lo stesso \(t\).
+
+Quindi ad esempio, considerando il sistema andando a filtrare il primo qubit, si avrrà che la formula finale sarà:
+\begin{gather*}
+\rho_A = \mathrm{Tr}(_B(\rho_{AB}) =
+\left(\begin{smallmatrix}
+e_{11}+e_{22} & e_{13}+e_{24}\\
+e_{31}+e_{42} & e_{33}+e_{44}
+\end{smallmatrix}\right)
+=
+\left(\begin{smallmatrix}
+\mathrm{Tr}\left(\begin{smallmatrix} e_{11} & e_{12}\\ e_{21} & e_{22} \end{smallmatrix}\right) &
+\mathrm{Tr}\left(\begin{smallmatrix} e_{13} & e_{14}\\ e_{23} & e_{24} \end{smallmatrix}\right)\\[2ex]
+\mathrm{Tr}\left(\begin{smallmatrix} e_{31} & e_{32}\\ e_{41} & e_{42} \end{smallmatrix}\right) &
+\mathrm{Tr}\left(\begin{smallmatrix} e_{33} & e_{34}\\ e_{43} & e_{44} \end{smallmatrix}\right)
+\end{smallmatrix}\right)\\
+= 
+\left[\begin{smallmatrix}
+e_{11} + e_{22} & e_{13} + e_{24}\\
+e_{31} + e_{42} & e_{33} + e_{44}       
+\end{smallmatrix}\right]
+\end{gather*}
+
+Questa \textbf{NON} è una regola generale, ma solo nel caso del primo qubit ordinato, mentre nel caso del secondo bisogna andare a costruire tali matrici in modo alterno.
+\end{info}
+
+\begin{info}
+Alla fine, quindi, il calcolo della matrice di densità ridotta si traduce, rimuovendo i termini che si annullano dato che il qubit \(B\) è "diverso":
+
+\begin{align*}
+\rho_A ={}& |a|^2\,\ket{0}\bra{0}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+cd^*\,\mathrm{Tr}(\ket{0}\bra{1})+dc^*\,\mathrm{Tr}(\ket{1}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)\\
+&+ab^*\,\ket{0}\bra{1}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+cd^*\,\mathrm{Tr}(\ket{0}\bra{1})+dc^*\,\mathrm{Tr}(\ket{1}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)\\
+&+ba^*\,\ket{1}\bra{0}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+cd^*\,\mathrm{Tr}(\ket{0}\bra{1})+dc^*\,\mathrm{Tr}(\ket{1}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)\\
+&+|b|^2\,\ket{1}\bra{1}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+cd^*\,\mathrm{Tr}(\ket{0}\bra{1})+dc^*\,\mathrm{Tr}(\ket{1}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)
+\end{align*}
+
+Questo è il risultato, dopo diversi raccoglimenti rispetto al caso precedente, facendo poi tutti i calcoli, considerando quello che si è detto sulla trasposta precedentemente, si arriverà a che tutti i termini misti sono nulli, ovvero (\(Tr(\ket{0}\bra{1})=0, Tr(\ket{1}\bra{0})=0\)). Si ottiene:
+\begin{align*}
+\rho_A ={}& |a|^2\,\ket{0}\bra{0}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)\\
+&+ab^*\,\ket{0}\bra{1}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)\\
+&+ba^*\,\ket{1}\bra{0}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)\\
+&+|b|^2\,\ket{1}\bra{1}\left(|c|^2\,\mathrm{Tr}(\ket{0}\bra{0})+|d|^2\,\mathrm{Tr}(\ket{1}\bra{1})\right)
+\end{align*}
+
+Che darà come output lo stato del primo qubit, ricavato dalla densità totale, come:
+\begin{align*}
+\rho_A
+={}& \left(|c|^2+|d|^2\right)\left(
+|a|^2\,\ket{0}\bra{0}+ab^*\,\ket{0}\bra{1}+ba^*\,\ket{1}\bra{0}+|b|^2\,\ket{1}\bra{1}
+\right)\\[2mm]
+={}& \left(|c|^2+|d|^2\right)
+\left(
+\begin{smallmatrix}
+|a|^2 & ab^*\\
+ba^* & |b|^2
+\end{smallmatrix}
+\right) = 
+\left(
+\begin{smallmatrix}
+|a|^2 & ab^*\\
+ba^* & |b|^2
+\end{smallmatrix}
+\right)
+\end{align*}
+
+Dato che i due qubit precedenti sono puri, allora è stato possibile dire che \(c^2 + d^2 = 1\). 
+\end{info}
+
 \input{chapters/chapter-3/1-1-density-principles.tex}
