@@ -1,0 +1,82 @@
+\subsection{Rappresentazione Geometrica degli stati misti a singolo qubit}
+Ogni matrice Hermitiana può essere scritta come:
+\begin{gather*}
+    \left(\begin{smallmatrix}
+        a & c-id\\
+        c+id & b
+    \end{smallmatrix}\right), a,b,c,d \in \mathbb{R}
+\end{gather*}
+Dove si nota che gli elementi sulla diagonale secondaria sono complessi e coniugati (dato che la matrice è Hermitiana per ipotesi). Dato che nei nostri casi, si ha anche il vincolo di traccia unitaria, si ottiene che tale matrice potrà essere scritta come:
+\begin{gather*}
+    \frac{1}{2}
+    \left(\begin{smallmatrix}
+    1 + z & x-iy \\
+    x + iy & 1 - z    
+    \end{smallmatrix}\right), x,y,z \in \mathbb{R}
+\end{gather*}
+Dove sono richiesti solo tre parametri per scrivere tale matrice. Dato questo, quindi, ogni matrice di densità associata ad un singolo qubit potrà essere scritta come:
+\begin{gather*}
+    \rho = \frac{1}{2}(I + r_x \sigma_x + r_y \sigma_y + r_z \sigma_z)\\
+    \sigma_x = X = \left(\begin{smallmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{smallmatrix}\right)\\
+    \sigma_y = -iY = \left(\begin{smallmatrix}
+        0 & -i \\
+        i & 0
+    \end{smallmatrix}\right)\\
+    \sigma_z = Z = \left(\begin{smallmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{smallmatrix}\right)
+\end{gather*}
+
+Da tale definizione, il calcolo del determinante di \(\rho\), sarà definibile come:
+\begin{gather*}
+    \rho = \frac{1}{4}(1-r^2)\\
+    r = \sqrt{|r_x|^2 + |r_y|^2 + |r_z|^2}
+\end{gather*}
+Dove \(r\) è la distanza dall'origine di uno spazio tridimensionale. Dato che il determinante di \(\rho\) è il prodotto dei suoi autovalori, unito al fatto che non possono essere negativi (date le proprietà dell'operatore di densità) e devono essere minori di 1. Si avrà che sarà possibile rappresentare tale stato su di una sfera di raggio unitario dove gli stati presenti sul bordo di tale sfera hanno \(det(\rho)= 0\). Uno dei loro autovalori deve essere 0. Quindi sul bordo della sfera noi siamo in stati puri, mentre internamente alla sfera siamo in degli stati misti. Per vedere questa cosa, considerando lo stato massimamente misto:
+\begin{gather*}
+    \rho = \frac{I}{2}
+\end{gather*}
+Andando a calcolare la \(r\) si ottiene che:
+\begin{gather*}
+    r_x = 0, r_y = 0, r_z = 0\\
+    r = 0\\
+    det(\rho) = \frac{1}{4} \ne 0
+\end{gather*}
+
+Non dipende con quale base io vada a misurare tale sistema, avrò sempre un incertezza. Questo permette di capire anche, rispetto al singolo qubit, dove quest'ultimo si colloca quando è in uno stato misto e non in uno stato puro. 
+
+\subsection{Von Neumann Entropy}
+La Von Neumann Entropy di uno stato misto permette di descrivere l'incetrezza che si ha su tale stato (sul fatto ceh sia puro o meno). In un certo senso è come scrivere quanto uno stato è misto. L'entropia di Von Neumann di uno stato misto si definisce come:
+\begin{gather*}
+    S(\rho) = - Tr[\rho \log_2(\rho)] = -\sum_i \lambda_i \log_2(\lambda_i)
+\end{gather*}
+Dove per uno stato puro tale entropia vale 0, mentre per uno stato misto questo non è detto. Il livello di massima incertezza si avrà quando \(S(\rho) = 1\), associato allo stato massimamente misto di un singolo qubit. 
+Generalizzando per sistemi ad n-qubit, lo stato massimamente misto è quello in cui si avrà un operatore d densità per cui tutti gli elementi sulla diagonale saranno \(2^{-n}\). Uno stato massimamente misto su un sistema ad n-qubit sarà quindi \(S(\rho) = n\). 
+
+Siano adesso, \(\lambda_1\) e \(\lambda_2\) sue autovalori di \(\rho\) (operatore di densità associato ad un sistema a singolo qubit), con \(\lambda_2 = 1 - \lambda_1\). Allora il determinante di \(\rho\) potrà essere scritto come:
+\begin{gather*}
+\det(\rho) = \lambda_1 \lambda_2 = \lambda_1 (1 - \lambda_1)
+\end{gather*}
+Andando a risolvere tale equazione, si ottiene che:
+\begin{gather*}
+    \lambda_1 = \frac{1 + \sqrt{1 - 4*\det(\rho)}}{2}\\
+    \lambda_2 = \frac{1 - \sqrt{1 - 4*\det(\rho)}}{2}
+\end{gather*}
+
+Ricordando che è possibile scrivere \(\det(\rho) = \frac{1}{4}(1-r^2)\), si potranno andare a calcolare tali lambda come:
+\begin{gather*}
+    \lambda_1 = \frac{1 + r}{2}\\
+    \lambda_2 = \frac{1 - r}{2}
+\end{gather*}
+Nel caso in cui si abbia uno stato puro, per cui \(r=1\), si noti che solo \(\lambda_1 = 1\) mentre \(\lambda_2 = 0\), questa è una conseguenza che ci aspettiamo nel caso di uno stato puro, dato che non ha incertezza sulla sua misura stessa. 
+Date tali osservazioni, sarà quindi possibile scrivere l'entropia di Von Neumann per un sistema a singolo qubit come:
+\begin{gather*}
+    S(\rho) = - \left[\frac{1 + r}{2}\log_2\left(\frac{1 + r}{2}\right) + \frac{1-r}{2}\log_2\left(\frac{1 - r}{2}\right)\right]
+\end{gather*}
+
+Questo ci permette di dire che l'entropia di Von Neumann associata ad un singolo qubit è una funzione della distanza radiale \(r\) dall'origine degli assi su cui è definita la sfera di Bloch.
+
