@@ -1,0 +1,33 @@
+\subsection{Quantum operations Formalism}
+Il quantum operation formalism è uno strumento che permette di andare a valutare il sistema a valle di un opearzione che avviene in modo Black Box. Per comprendere al meglio tale differenza si considera un esempio preso dal libro \cite{nielsen2010}. Quando si va ad effettuare una singola operazione unitaria su di un sistema single qubit quello che si ottiene è un sistema del tipo visualizzabile nella figura [\ref{img:single-system}]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{fig/Chapter-3/sistema_chiuso.png}
+\caption{Sistema Chiuso}\label{img:single-system}
+\end{figure}
+
+Quindi in tale sistema l'operazione U agisce solamente sul nostro sistema di interesse senza tenere conto dell'ambiente. Mentre nel caso della Quantum Operation si va a considerare anche un contributo \(\rho_{env}\) che è legato all'ambiente. Nella figure [\ref{img:double-system}] è mostrato quello che si intende. Precisamente, in tale immagine si considera che i due sistemi prima dell'operazione non siano in alcun modo interagenti.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{fig/Chapter-3/sistema_aperto.png}
+\caption{Open Quantum System}\label{img:double-system}
+\end{figure}
+
+Quindi sarà possibile dire che \(\rho'\) (Matrice di densità associata allo stato successivo all'operazione) è calcolabile rispetto a \(\rho\) (Matrice di densità associata allo stato prima dell'operazione). Ottenendo:
+
+\begin{gather*}
+    \rho' = \varepsilon(\rho)
+\end{gather*}
+
+Dove la \(\varepsilon\) è la quantum operation. Tale operazione può generalizzare sia operazioni unitarie su un sistema chiuso (caso in cui l'operazione U non vada a generare delle iterazioni con il sistema considerato), definendo operazioni del tipo \(\varepsilon(\rho)=U \rho U^\dagger\), sia di descrivere vere e proprie operazioni di misura \(\varepsilon(\rho) = M_m \rho M_m^\dagger \). Le quantum operations, quindi, sono possibili tutte le operazioni fisicamente possibili.
+
+I principali metodi utilizzati per lo studio delle quantum operation sono:
+\begin{itemize}
+    \item \textbf{Sistema accoppiato con l'ambiente}: Sì va a studiare la dinamica del sistema in base al suo accoppiamento con l'ambiente. Un pò come succede nel caso classico. Non è molto conveniente matematicamente nonostante la sua grande vicinanza alla realtà
+    
+    \item \textbf{Rappresentazione Somma-operatore}: Sistema che considera le stesse identiche cose del primo metodo, con la differenza che cerca di sopperire all'inconvenienza matematica con la rappresentazione somma operatore. Tale metodologia è molto astratta ma è utile per i calcoli e per i lavori teorici
+
+    \item \textbf{Assiomi fisicamente motivati}: Metodologia che utilizza degli assiomi che vengono definiti sulla base di risultati provenienti dal mondo quantistico, quindi fisicamente motivati, che vanno a manifestarsi mediante funzioni dinamiche
+\end{itemize}
