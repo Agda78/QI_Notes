@@ -1,0 +1,98 @@
+\subsection{Master Equation}
+Oltre allo strumento della quantum operation è possibile andare a studiare il sistema anche mediante l'utilizzo della master equation. Più precisamente, il \textbf{master equation formalism} è un formalismo matematico che va a studiare l'andamento di \(\rho\) tramite la master equation. Tale formalismo è meno generale rispetto a quello adottato nella quantum operations formalism. Difatti un processo quantistico descritto mediante la rappresentazione somma operatore non è detto sia riscrivibile mediante la master equation. La master equation ha come vantaggio quello di poter andare a valutare i disturbi ed i loro comportamenti sullo stato generale del sistema. Si riporta la lindblad form della master equation:
+\begin{gather*}
+    \frac{d}{dt}\rho(t) = -\frac{i}{\hbar}\left[H_s, \rho(t)\right] + \sum_k \left(L_k \rho(t)L_k^\dagger - \frac{1}{2}\{L_k^\dagger L_k, \rho(t)\}\right)
+\end{gather*}
+
+Dove la notazione \([A,B] = AB - BA\) e \(\{A,B\} = AB + BA\). Mentre gli elementi dell'equazione sono:
+\begin{itemize}
+    \item \(\hbar\): Costante di Plank
+    \item \(H_s\): Hemiltoniano del sisitema, è un operatore hermitiano, per sistemi chiusi, la sua conoscenza vuol dire conoscere l'evoluzione della dinamica del sistema (anche in questo caso non dipendente dal tempo)
+    
+    \item \(\{L_k\}\): Operatori di Lindblad, rappresentano l'accoppiamente del sistema con l'ambiente
+    
+    \item \(d^2-1\): Numero di operatori di Lindblad indipendenti associati ad un sistema di \(d\) qubit. Racchiudono tutte le possibili dissipazioni.
+    
+    \item Per un sistema a singolo qubit si può definire \(L_k = \sqrt{\gamma_k}\Omega_k, k \in {x,y,z}\). Dove il \(\gamma_k\) mi permette di capire quanto il mio sistema sia accoppiato con l'ambiente rispetto alla specifica matrice di Pauli (Tasso di decoerenza per lo specifico canale \(k\))
+\end{itemize}
+
+\subsubsection{Z-Noise}
+Definita l'equazione è anche possibili andare a notare, componente per componente, come agisce il rumore sulle singole componenti. Considerando un rumore presente solo sull'asse \(z\) si definisce \(L_z = \sqrt{\gamma_z}\Omega_z\) e \(\frac{H_s}{\hbar} = \frac{\Omega}{2}\Omega_z\). Sostituendo nella master equation si ottiene:
+
+\begin{gather*}
+    \frac{d}{dt}\rho(t) = -i\left[\frac{\Omega}{2}\Omega_z, \rho(t)\right] + L_z \rho(t) L_z^\dagger - \frac{1}{2}\{L_z^\dagger L_z, \rho(t)\}
+\end{gather*}
+
+Proseguendo nei calcoli si ottiene che:
+\begin{gather*}
+\frac{d}{dt}\rho(t) = -\frac{i \Omega}{2}
+\left[\begin{smallmatrix}
+0 & 2 \rho^{01}(t)\\
+-2\rho^{10}(t) & 0
+\end{smallmatrix}\right] +
+\gamma_z
+\left[\begin{smallmatrix}
+0 & -2 \rho^{01}(t)\\
+-2\rho^{10}(t) & 0
+\end{smallmatrix}\right] = 
+\left[\begin{smallmatrix}
+0 & -(i\Omega + 2 \gamma_z)\rho^{01}(t)\\
+(i\Omega-2 \gamma_z)\rho^{10}(t) & 0
+\end{smallmatrix}\right]
+\end{gather*}
+
+Gli elementi sulla diagonale principale sono nulli data la loro costanza nel tempo (le probabilità non cambiano). Quindi \(\rho^{jj}(t) = \rho^{jj}(0), \forall t, j=0,1\). Andnado a risolvere le disequazioni si ottiene che:
+\begin{gather*}
+    \rho^{01}(t) = \rho^{01}(0)e^{-(i\Omega + 2\gamma_z)t}\\
+    \rho^{10}(t) = \rho^{10}(0)e^{-(-i\Omega + 2 \gamma_z)t}= (\rho^{01}(t))^*
+\end{gather*}
+
+Quindi un qubit arbitrario accumula una fase \(\Omega t\) rispetto alla differenza di energia tra \(\ket{0}\) e \(\ket{1}\). Conoscendo \(\Omega\), l'evoluzione di fase può essere compensata mediate una gate di shift di fase \(R_{\Omega t}\) che va ad agire sul sistema ponendo il seguente risultato:
+\begin{gather*}
+    \rho(t) = R_{\Omega t} \rho R_{\Omega t}^\dagger = \left[\begin{smallmatrix}
+        \rho^{00}(0) & \rho^{01}(0)e^{-2 \gamma_z t}\\
+        \rho^{10}(0)e^{-2 \gamma_z t} & \rho^{11}(0)
+    \end{smallmatrix}\right]\\
+    R_{\Omega t} = \left[\begin{smallmatrix}
+        1 & 0\\
+        0 & e^{-i \Omega t}
+    \end{smallmatrix}\right]
+\end{gather*}
+
+Andando ad esplicitare la \(\rho\) nella forma \(\rho = \frac{1}{2}(I + r_x \Omega_x + r_y \Omega_y + r_z \Omega_z)\), si ottiene che:
+\begin{align*}
+    r_x(t) &= r_x(0)e^{-2 \gamma_z t}\\
+    r_y(t) &= r_y(0)e^{-2 \gamma_z t}\\
+    r_z(t) &= r_z(0)
+\end{align*}
+
+Che ci spiega come il sistema ruota attorno solo all'asse \(z\), guardando la sfera di bloch. Andando riducendosi attorno all'asse \(z\). 
+
+\subsubsection{X-Noise}
+Come nel caso dello Z-Noise, si considera il rumore sulla rotazione lungo X, sì va a definire quindi \(L_x = \sqrt{\gamma_x}\sigma_x\) con \(\frac{H_s}{\hbar} = \frac{\Omega}{2}\sigma_z\). Una volta impostati questi valori si prosegue nella soluzione dell'equazione:
+\begin{gather*}
+\frac{d}{dt}\rho(t) 0 -i \left[\frac{\Omega}{2}\sigma_z,\rho(t)\right] + L_x \rho(t) L_x^\dagger - \frac{1}{2}\{L_x^\dagger L_x, \rho(t)\}
+\end{gather*}
+
+Andando a risolvere tale equazione si otterrà:
+\begin{gather*}
+    \rho(t) = 
+    \frac{1}{2}
+    \left[\begin{smallmatrix}
+    \rho^{00}(t)(0)(1 + e^{-2 \gamma_x t}) + \rho^{11}(0)(1 - e^{-2 \gamma_x t}) & \rho^{01}(0)(1+e^{-2 \gamma_x t}) + \rho^{10}(0)(1 - e^{-2 \gamma_x t})\\
+    \rho^{10}(0)(1+e^{-2 \gamma_x t}) + \rho^{01}(0) (1 - e^{-2 \gamma_x t}) & \rho^{11}(0)(1+e^{-2 \gamma_x t}) + \rho^{00}(0)(1 - e^{-2 \gamma_x t})
+    \end{smallmatrix}\right]
+\end{gather*}
+
+Andando ad esplicitare il sistema come \(\rho = \frac{1}{2}(I + r_x \sigma_x + r_y \sigma_y + r_z \sigma_z)\), si ottiene:
+\begin{align*}
+r_x(t) &= r_x(0)\\
+r_y(t) &= r_y(0)e^{-2 \gamma_x t}\\
+r_z(t) &= r_z(0)e^{-2 \gamma_x t}
+\end{align*}
+
+A mano a mano si entrava nella sfera di Bloch andando a convergere poi, solo alla fine, sulla sola componente \(r_x\).
+
+\subsection{Somme}
+Il rumore quantistico, quindi è moltiplicativi (agisce sul vettore di bloch per un verto valore non uguale tra tutti) andando ad intaccare in maniera non euguale tutte le coordinate del sistema, tale comportamento è stato anche descritto da chip quantistici reali.
+In generale, lo Z-noise non va ad intaccare la popolazione (elementi sulla diagonale di \(\rho\)) ma va ad intacccare le coerenze (elementi fuori digonale), mentre l'X-Noise va anche ad intaccare gli elementi sulla digonale, portando anche a possibili Bit-Flip. L'Y-Noise (non visto), è una combinazione di ambo i rumori, quindi va ad intaccare tutto come nel caso dell'X-Noise.
