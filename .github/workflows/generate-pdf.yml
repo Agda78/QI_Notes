@@ -5,36 +5,27 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build-and-commit-pdf:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout del repository
-        uses: actions/checkout@v3
-
-      - name: Installazione di LaTeX (inclusa lingua italiana)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-latex-base \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            texlive-lang-italian \
-            latexmk \
-            rsync
+        uses: actions/checkout@v4
 
       - name: Compilazione del file LaTeX in PDF
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          working_directory: .
           latexmk_use_xelatex: false
-          extra_system_packages: "rsync"
+          extra_system_packages: rsync
           pre_compile: |
             mkdir -p pdf_output
             rsync -a --include '*/' --exclude '*' chapters/ pdf_output/chapters/
-          args: -pdf -output-directory=pdf_output -f -interaction=nonstopmode
+          args: -pdf -interaction=nonstopmode -file-line-error -output-directory=pdf_output
 
       - name: Configurazione di Git
         run: |
