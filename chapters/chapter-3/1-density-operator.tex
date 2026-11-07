@@ -50,7 +50,7 @@ P^2 = P = P^\dagger
 E quindi godrà sia della proprietà di ortogonalità che di idempotenza. Una conseguenza delle matrici (o operatori) di \textbf{proiezione ortogonale} è che tutti gli autovalori associati saranno o uguali a 0 o ad 1 con diversi gradi di molteplicità algebrica.
 
 \begin{warn}
-Un proiettore è sempre idempotente data la sua definizione (altrimenti non sarebbe un proiettore), mentre la condizione di ortogonalità non è sempre verificata, infatti, tutte le volte che si ha ache fare con proiettori non ortogonali questi si dicono \textbf{proiezioni oblique}
+Un proiettore è sempre idempotente data la sua definizione (altrimenti non sarebbe un proiettore), mentre la condizione di ortogonalità non è sempre verificata, infatti, tutte le volte che si ha a che fare con proiettori non ortogonali questi si dicono \textbf{proiezioni oblique}
 \end{warn}
 \end{info}
 
@@ -83,7 +83,7 @@ La traccia di una matrice è una funzione lineare che calcola la somma degli ele
 \begin{gather*}
 tr(B) = \sum_{k} \bra{k} B \ket{k}
 \end{gather*}
-Che viene valutata su una base ortonormale \(\{\ket{k}\}\) (è indipedente dalla base secondo cui si valuti).
+Che viene valutata su una base ortonormale \(\{\ket{k}\}\) (è indipendente dalla base secondo cui si valuti).
 Se si considera che \(\sum_{k}\ket{k}\bra{k} = I\), si ottiene:
 \begin{align*}
 tr(A\ket{\psi}_i \bra{\psi_i}) &= \sum_{k}\bra{k}A\ket{\psi_i}\braket{\psi_i | k}\\
@@ -92,7 +92,7 @@ tr(A\ket{\psi}_i \bra{\psi_i}) &= \sum_{k}\bra{k}A\ket{\psi_i}\braket{\psi_i | k
 \end{align*}
 dove nel secondo passaggio si sono scambiati due scalari. Equivalentemente, è un’applicazione della ciclicità della traccia, \(tr(XY ) = tr(Y X)\), con \(X = A \ket{\psi_i}\) e \(Y = \bra{\psi_i}\), tenendo conto che la traccia di uno scalare è lo scalare stesso.
 \end{info}
-Completata quella che è un introduzione puramente matematica degli stumenti che saranno utilizzati si va ad approfondire come questi debbano coesistere. La \textbf{traccia di una matrice} ci serve a determinare la probabilità che, misurando \(A\) a partire dallo stato \(\ket{\psi}\), il sistema si porti nello stato \(\ket{a_j}\). Questa è determinabile mediante la formula:
+Completata quella che è un'introduzione puramente matematica degli strumenti che saranno utilizzati si va ad approfondire come questi debbano coesistere. La \textbf{traccia di una matrice} ci serve a determinare la probabilità che, misurando \(A\) a partire dallo stato \(\ket{\psi}\), il sistema si porti nello stato \(\ket{a_j}\). Questa è determinabile mediante la formula:
 \begin{gather*}
 p_j = Tr\left(M_j \rho\right)
 \end{gather*}
@@ -124,7 +124,7 @@ M_0 = \left[\begin{smallmatrix}
 \end{smallmatrix}\right]
 \end{gather*}
 
-Sì vuole valutare la probabilità di uscita del vettore \(\ket{0}\), si avrà che:
+Si vuole valutare la probabilità di uscita del vettore \(\ket{0}\), si avrà che:
 \begin{gather*}
 p_0 = Tr(M_0 \rho) = Tr\left(
 \left[\begin{smallmatrix}
@@ -177,7 +177,7 @@ L'operatore di densità, date tutte le premesse fatte e la sua definizione, godr
 \begin{info}
 \begin{itemize}
  \item \textbf{Traccia del quadrato}: \(Tr(\rho) \le 1\).\\
-       Tale proprietà ci permette di capire che l'operatore di densità si comporta come un proiettore (\(\rho^2=\rho\)) solo quando lo stato è puro, in quel caso varra la condizione \(Tr(\rho^2) = Tr(\rho) = 1\). Ma quando si parla di stati misti la condizione sarà \(Tr(\rho^2)<1\) Questo perchè, essendo presenti sulla diagonale principale le probabilità di trovarsi nei vari stati, e quindi valori che sono compresi tra 0 ed 1, quando questi vengono elevati al quadrato, allora, diverranno ancora più piccoli, dimostrando la relazione. Matematicamente, considerando la traccia della matrice \(\rho^2\), avremo che:
+       Tale proprietà ci permette di capire che l'operatore di densità si comporta come un proiettore (\(\rho^2=\rho\)) solo quando lo stato è puro, in quel caso varrà la condizione \(Tr(\rho^2) = Tr(\rho) = 1\). Ma quando si parla di stati misti la condizione sarà \(Tr(\rho^2)<1\) Questo perché, essendo presenti sulla diagonale principale le probabilità di trovarsi nei vari stati, e quindi valori che sono compresi tra 0 ed 1, quando questi vengono elevati al quadrato, allora, diverranno ancora più piccoli, dimostrando la relazione. Matematicamente, considerando la traccia della matrice \(\rho^2\), avremo che:
        \begin{gather*}
               Tr(\rho^2)=\sum_{i}\lambda_i^2
        \end{gather*}
@@ -187,7 +187,7 @@ L'operatore di densità, date tutte le premesse fatte e la sua definizione, godr
        \begin{gather*}
               \rho = \sum_{i}p_i \ket{\psi}\bra{\psi}       
        \end{gather*}
-       non è unica. Questo è un problema, dato che diversi insiemi di stati puri mi portano alla stessa espressione della matrice di densità, quindi se lavoro con una carta matrice \(\rho\) non so bene quale set di stati puri me l'abbia generata.
+       non è unica. Questo è un problema, dato che diversi insiemi di stati puri mi portano alla stessa espressione della matrice di densità, quindi se lavoro con una certa matrice \(\rho\) non so bene quale set di stati puri me l'abbia generata.
 \end{itemize}
 \end{info}
 
@@ -203,7 +203,7 @@ Andando a valutare la traccia, si avrà:
 \begin{gather*}
        Tr(\rho) = |\alpha|^2 + |\beta|^2 = 1
 \end{gather*}
-Se si va a valutare anche la \(\rho^2\), si ottiene la condizione per cui \(rho^2 = \rho\) e di conseguenza \(Tr(\rho^2) = 1\). 
+Se si va a valutare anche la \(\rho^2\), si ottiene la condizione per cui \(\rho^2 = \rho\) e di conseguenza \(Tr(\rho^2) = 1\). 
 
 Se invece, lo stato che andiamo a considerare è misto le cose cambiano. Per esempio, considerando due possibili stati puri in cui il sistema potrà trovarsi, si avrà:
 \begin{gather*}
@@ -233,7 +233,7 @@ In questo caso, rispetto anche allo stato puro, notiamo che non c'è più una co
 
 \begin{info}
 \textbf{Operatore di densità ridotto}\\
-L'operatore di densità ridotto permette di poter restringere il campo di visualizzazione dello stato del sistema ad un sottosistema di quest'ultimo. La cosa interessate è come, poi, si possa andare a controllare tale "stato".
+L'operatore di densità ridotto permette di poter restringere il campo di visualizzazione dello stato del sistema ad un sottosistema di quest'ultimo. La cosa interessante è come, poi, si possa andare a controllare tale "stato".
 
 Matematicamente per effettuare tale restringimento si utilizza l'operazione di \textbf{traccia parziale}. A differenza della traccia di una matrice, che restituisce uno scalare, la traccia parziale restituisce una matrice ridotta rispetto a quella originaria. Consideriamo un sistema composto da due sottosistemi \(A\) e \(B\). Se si vuole osservare lo stato, solo del sistema \(A\), allora bisognerà andare ad utilizzare la seguente relazione:
 \begin{gather*}
@@ -248,7 +248,7 @@ Data una base \(\{\ket{\alpha_1}, \ket{\alpha_2}, \dots, \ket{\alpha_M}\}\) del 
 \ket{x}=\sum_{i=0}^{M-1}\sum_{j=0}^{L-1}x_{ij}\ket{\alpha_i}\ket{\beta_j}
 \end{gather*}
 
-Una misurazione sul sistema \(A\) è modellata dagli osservabili \(O^A\) con i corrispettivi proiettori \(\{P_i^A\}, 0 \le i \le 2^m\). Sull'intero sistma, quindi, tale misura sarà vista come: \(O^A \otimes I^B\), scrivendolo rispetto ai proiettori, si avrà \(P_i^A \otimes I^B\). Per ogni proiettore oraticolare \(P^A\), \(\bra{x}P^a \otimes I \ket{x}\) cì da la probabilità che una misura di \(\ket{x}\) da \(O^A \otimes I^B\) risulti in uno stato in un sottospazioe associato a \(P^A\). Scrivendo tale probabilità nei termini visti precedentemente si avrà:
+Una misurazione sul sistema \(A\) è modellata dagli osservabili \(O^A\) con i corrispettivi proiettori \(\{P_i^A\}, 0 \le i \le 2^m\). Sull'intero sistema, quindi, tale misura sarà vista come: \(O^A \otimes I^B\), scrivendolo rispetto ai proiettori, si avrà \(P_i^A \otimes I^B\). Per ogni proiettore particolare \(P^A\), \(\bra{x}P^a \otimes I \ket{x}\) ci dà la probabilità che una misura di \(\ket{x}\) da \(O^A \otimes I^B\) risulti in uno stato in un sottospazio associato a \(P^A\). Scrivendo tale probabilità nei termini visti precedentemente si avrà:
 \begin{align*}
 \bra{x} P^A \otimes I \ket{x} &= \left(\sum_{ij}x_{ij}^*\bra{\alpha_i}\otimes\bra{\beta_j}\right)(P^A \otimes I)\left(\sum_{kl}x_{kl}\bra{\alpha_k}\otimes\bra{\beta_l}\right)=\\
 &= \sum_{ijkl}x_{ij}^* x_{kl}\bra{\alpha_i}P^A\ket{\alpha_k}\braket{\beta_j | \beta_l}
@@ -314,7 +314,7 @@ Da cui si ricava che lo stato finale sarà:
 \rho_A = \frac{1}{2}(\ket{0}\bra{0} + \ket{1}\bra{1}) = \frac{1}{2}I
 \end{gather*}
 
-Dove si vuole far notare che, nonostante fossimo in un caso in cui lo stato non è misto, ma \(Tr(\rho^2)<1\). Questo ci dice che quindi, se uno stato è misto sicuro varrà tale proprietà e non il viceversa (è un implicazione, non un se e solo se). Una cosa curiosa da notare è come lo stato non cambi rispetto ad altre basi:
+Dove si vuole far notare che, nonostante fossimo in un caso in cui lo stato non è misto, ma \(Tr(\rho^2)<1\). Questo ci dice che quindi, se uno stato è misto sicuro varrà tale proprietà e non il viceversa (è un'implicazione, non un se e solo se). Una cosa curiosa da notare è come lo stato non cambi rispetto ad altre basi:
 \begin{gather*}
        \rho_A = \frac{1}{2} I\\
        H \rho_A H = \frac{1}{2}HIH = \frac{1}{2}HH
@@ -358,7 +358,7 @@ Che è esattamente lo stato \(\ket{0}\) che è quello che ci aspettiamo dato lo 
 
 \begin{info}
 \textbf{Calcolo della matrice parziale}\\
-Un modo semplice con cui è possibile calcolare la matrice parziale è quello di andare a sommare i valori per cuiil primo stato rimane uguale ed il secondo, una volta è completamente nello stato 0 ed una volta completamente nello stato 1. Per capire meglio, si va a considerare una matrice di densità associata a 2 qubit \(\ket{\psi_A} = a \ket{0} + b \ket{1}\) ed un qubit \(\ket{\psi_B} = c \ket{0} + d \ket{1} \) per cui si ha che la matrice di densità:
+Un modo semplice con cui è possibile calcolare la matrice parziale è quello di andare a sommare i valori per cui il primo stato rimane uguale ed il secondo, una volta è completamente nello stato 0 ed una volta completamente nello stato 1. Per capire meglio, si va a considerare una matrice di densità associata a 2 qubit \(\ket{\psi_A} = a \ket{0} + b \ket{1}\) ed un qubit \(\ket{\psi_B} = c \ket{0} + d \ket{1} \) per cui si ha che la matrice di densità:
 
 \begin{align*}
 \rho ={}& |ac|^2\ket{00}\bra{00} + ac(ad)^*\ket{00}\bra{01} + ac(bc)^*\ket{00}\bra{10} + ac(bd)^*\ket{00}\bra{11}\\
@@ -392,9 +392,9 @@ Tr(\rho_B) = Tr(\ket{k}\bra{j}) = \braket{k | j} = \delta_{kj}
 Dove \(k\) e \(j\) possono essere solo o 0 o 1.
 Gli elementi finali da sommare, quindi, possono essere visti come delle somme solo per quegli stati per cui, il sistema \(B\) si trova nello stesso "livello", quindi o solo in 0 o solo in 1, per non permettere a quel delta di essere 0. Poi si valuta il sistema \(A\) come solo gli elementi che ricadono nello stesso punto della matrice, che quindi condividono il termine \(\ket{s}\bra{t}\) e che quindi hanno lo stesso \(s\) e lo stesso \(t\).
 
-Quindi ad esempio, considerando il sistema andando a filtrare il primo qubit, si avrrà che la formula finale sarà:
+Quindi ad esempio, considerando il sistema andando a filtrare il primo qubit, si avrà che la formula finale sarà:
 \begin{gather*}
-\rho_A = \mathrm{Tr}(_B(\rho_{AB}) =
+\rho_A = \mathrm{Tr}_B(\rho_{AB}) =
 \left(\begin{smallmatrix}
 e_{11}+e_{22} & e_{13}+e_{24}\\
 e_{31}+e_{42} & e_{33}+e_{44}

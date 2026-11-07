@@ -1,14 +1,14 @@
 \chapter{Quantum Error Correction}
 Connettere tra loro più dispositivi quantistici richiede l'utilizzo di una rete quantistica. Tali collegamenti hanno un impatto fondamentale su diverse aree della Quantum Information, come:
 \begin{itemize}
-    \item Distribuited Quantum Computing
+    \item Distributed Quantum Computing
     \item Blind Quantum Computing
     \item Secure Classical Communication
     \item Quantum secret-sharing
     \item Molte altre applicazioni possibili
 \end{itemize}
 
-Ma questo richiede uno scambio di informazione quantistica tra i diversi dispositivi. Come visto precedentemente tale cose non è proprio facile, dato il teorema del no-cloning. Questo pone, quindi, la quantum teleportation e la quantum error correction al centro del dibattito generale. Tali tecnologie utilizzano tra di loro l'entanglement che viene "distribuito" tra i diversi dispositivi. La distribusione, fisicamente, ad oggi, avviene mediante l'utilizzo di fibre ottiche che trasportano fotoni (che possono essere entanglati anche con altre particelle). In generale la distribuzione delle coppie EPR è rumorosa (come anche nel caso classico), questo porta alla definizione dei \textbf{Canali Quantistici}.
+Ma questo richiede uno scambio di informazione quantistica tra i diversi dispositivi. Come visto precedentemente tale cose non è proprio facile, dato il teorema del no-cloning. Questo pone, quindi, la quantum teleportation e la quantum error correction al centro del dibattito generale. Tali tecnologie utilizzano tra di loro l'entanglement che viene "distribuito" tra i diversi dispositivi. La distribuzione, fisicamente, ad oggi, avviene mediante l'utilizzo di fibre ottiche che trasportano fotoni (che possono essere entanglati anche con altre particelle). In generale la distribuzione delle coppie EPR è rumorosa (come anche nel caso classico), questo porta alla definizione dei \textbf{Canali Quantistici}.
 
 Il modello associato ad un canale quantistico è definito a partire dalla matrice di densità \(\rho = \ket{\psi}\bra{\psi}\) del sistema che viene "elaborata" seguendo la seguente definizione:
 \begin{gather*}
@@ -28,7 +28,7 @@ Da tale definizione generale è possibile andare a definire anche il modello di 
 
 Dove, \(p_i\) è la probabilità che avvenga un errore di tipo \(i\) (dove \(0\rightarrow I\), \(1 \rightarrow X\), \(2 \rightarrow Y\), \(3 \rightarrow Z\)). Le matrici \(\sigma_0 = I, \sigma_1 = X, \sigma_2=Y, \sigma_3 = Z\). Se volessimo valutare l'insieme di operatori di Kraus associati a tale modello, si avrebbe \(N_i = \sqrt{p_i}\sigma_i\). 
 
-Dalla definizione del canale di Pauli è possibile definire anche il canale di depolarizzazione quantistica, dove, alla fine, sì ha che tutti i possibili errori di pauli sono equiprobabili, per cui il canale sarà definibile come:
+Dalla definizione del canale di Pauli è possibile definire anche il canale di depolarizzazione quantistica, dove, alla fine, si ha che tutti i possibili errori di pauli sono equiprobabili, per cui il canale sarà definibile come:
 \begin{gather*}
     \mathcal{N}(\rho) = (1-p)\rho + \frac{p}{3}(X \rho X^\dagger + Y \rho Y^\dagger + Z \rho Z^\dagger)
 \end{gather*}
@@ -58,7 +58,7 @@ Tali errori possono essere visualizzati mediante delle deformazioni che il canal
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{fig/Chapter-4/bit_phase_flip.png}
-\caption{Y Pahse + Bit Flip}\label{img:bloch-bit-phase-flip}
+\caption{Y Phase + Bit Flip}\label{img:bloch-bit-phase-flip}
 \end{figure}
 
 Nonostante la presenza di tali disturbi le coppie EPR rimangono coppie EPR, ma in un diverso stato di Bell. Se consideriamo come stato di partenza lo stato \(\ket{\Phi^+}_{AB} = \frac{1}{\sqrt{2}}(\ket{00}_{AB} + \ket{11}_{AB})\), avremo che, i diversi canali di Pauli presentati prima, agiranno nel seguente modo:

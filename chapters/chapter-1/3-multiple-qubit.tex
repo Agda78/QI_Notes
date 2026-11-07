@@ -1,10 +1,10 @@
 \section{Multiple Qubits}
 Quando si vanno a considerare sistemi con più qubit, allora entra in gioco il \textbf{prodotto tensoriale}.
-Tale operazione si distingue dalla somma, prima di passare alla sua formalizzazione matematica è importante fare una considerazione sulla dimensione dello spazio vettoriale complesso in cui si andrà a lavorare. Con la somma tra due spazi vettoriali sì ottiene la seguente condizione:
+Tale operazione si distingue dalla somma, prima di passare alla sua formalizzazione matematica è importante fare una considerazione sulla dimensione dello spazio vettoriale complesso in cui si andrà a lavorare. Con la somma tra due spazi vettoriali si ottiene la seguente condizione:
 \[
 \mathbb{C}^n \oplus \mathbb{C}^m = \mathbb{C}^{n+m}
 \]
-Dove la base viene definira mediante l'unione delle due basi del sottospazio:
+Dove la base viene definita mediante l'unione delle due basi del sottospazio:
 \[
 \mathcal{B} = \{v_1,\dots,v_n, u_1, \dots, u_m\}
 \]
@@ -17,7 +17,7 @@ Dove la base sarà costituita da:
 \mathcal{B} = \{v_1 \otimes u_1, v_1 \otimes u_2, \dots v_n \otimes u_m\}
 \]
 
-Se andiamo a considerare in maniera diretta due stazi: \(V\) e \(W\), associati a due qubit, questi saranno dotati di due basi ben distinte:
+Se andiamo a considerare in maniera diretta due spazi: \(V\) e \(W\), associati a due qubit, questi saranno dotati di due basi ben distinte:
 \[
 \mathcal{B}_V = \{v_1, v_2\}
 \]
@@ -35,12 +35,12 @@ Mentre per il prodotto vettoriale, si avrà:
 \mathcal{B}_{V \otimes W} = \{v_1 \otimes w_1, v_1 \otimes w_2, v_2 \otimes w_1, v_2 \otimes w_2 \}
 \]
 
-Quando si va a considerare la base per il sistema di interazione tradue qubit, espressi nella base canonica, allora si avrà:
+Quando si va a considerare la base per il sistema di interazione tra due qubit, espressi nella base canonica, allora si avrà:
 \[
 \mathcal{B} = \{\ket{0} \otimes \ket{0}, \ket{0} \otimes \ket{1}, \ket{1} \otimes \ket{0}, \ket{1} \otimes \ket{1}\}
 \]
 
-Che più comunenemente, tale base, viene scritta come:
+Che più comunemente, tale base, viene scritta come:
 \[
 \mathcal{B} = \{\ket{00}, \ket{01}, \ket{10}, \ket{11}\}
 \]
@@ -52,7 +52,7 @@ Le posizioni all'interno del vettore con la ket, non perdono il loro significato
 \[
 \ket{00} = \ket{0_A 0_B}
 \]
-Dove \(A\) e \(B\), sono due qubit diversi e ben identificati. Il non specificare a quale sistema stiamo facendo riferimento è un abuso di notazione ( opiù una mancanza di notazione)
+Dove \(A\) e \(B\), sono due qubit diversi e ben identificati. Il non specificare a quale sistema stiamo facendo riferimento è un abuso di notazione (o più una mancanza di notazione)
 \end{info}
 
 La differenza sostanziale sta nel fatto che nel caso classico, in un determinato istante, un registro può trovarsi in una sola delle sue combinazioni, mentre nel caso quantistico, una coppia di qubit ha una probabilità non nulla di potersi trovare in uno dei 4 possibili stati della base (dopo la lettura).
@@ -60,7 +60,7 @@ La differenza sostanziale sta nel fatto che nel caso classico, in un determinato
 
 Detto questo, quindi, è possibile scrivere un qubit appartenente ad un sistema di 2 qubit come:
 \[
-\ket{\psi} 0 \alpha_0 \ket{00} + \alpha_1 \ket{01} + \alpha_2 \ket{10} + \alpha_3 \ket{11}
+\ket{\psi} = \alpha_0 \ket{00} + \alpha_1 \ket{01} + \alpha_2 \ket{10} + \alpha_3 \ket{11}
 \]
 \[
 \alpha_0, \alpha_1, \alpha_2, \alpha_3 \in \mathbb{C}, |\alpha_0|^2 + |\alpha_1|^2 + |\alpha_2|^2 + |\alpha_3|^2 = 1

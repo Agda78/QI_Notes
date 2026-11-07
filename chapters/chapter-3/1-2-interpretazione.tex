@@ -47,17 +47,17 @@ Andando a calcolare la \(r\) si ottiene che:
     det(\rho) = \frac{1}{4} \ne 0
 \end{gather*}
 
-Non dipende con quale base io vada a misurare tale sistema, avrò sempre un incertezza. Questo permette di capire anche, rispetto al singolo qubit, dove quest'ultimo si colloca quando è in uno stato misto e non in uno stato puro. 
+Non dipende con quale base io vada a misurare tale sistema, avrò sempre un'incertezza. Questo permette di capire anche, rispetto al singolo qubit, dove quest'ultimo si colloca quando è in uno stato misto e non in uno stato puro. 
 
 \subsection{Von Neumann Entropy}
-La Von Neumann Entropy di uno stato misto permette di descrivere l'incetrezza che si ha su tale stato (sul fatto ceh sia puro o meno). In un certo senso è come scrivere quanto uno stato è misto. L'entropia di Von Neumann di uno stato misto si definisce come:
+La Von Neumann Entropy di uno stato misto permette di descrivere l'incertezza che si ha su tale stato (sul fatto che sia puro o meno). In un certo senso è come scrivere quanto uno stato è misto. L'entropia di Von Neumann di uno stato misto si definisce come:
 \begin{gather*}
     S(\rho) = - Tr[\rho \log_2(\rho)] = -\sum_i \lambda_i \log_2(\lambda_i)
 \end{gather*}
 Dove per uno stato puro tale entropia vale 0, mentre per uno stato misto questo non è detto. Il livello di massima incertezza si avrà quando \(S(\rho) = 1\), associato allo stato massimamente misto di un singolo qubit. 
-Generalizzando per sistemi ad n-qubit, lo stato massimamente misto è quello in cui si avrà un operatore d densità per cui tutti gli elementi sulla diagonale saranno \(2^{-n}\). Uno stato massimamente misto su un sistema ad n-qubit sarà quindi \(S(\rho) = n\). 
+Generalizzando per sistemi ad n-qubit, lo stato massimamente misto è quello in cui si avrà un operatore di densità per cui tutti gli elementi sulla diagonale saranno \(2^{-n}\). Uno stato massimamente misto su un sistema ad n-qubit sarà quindi \(S(\rho) = n\). 
 
-Siano adesso, \(\lambda_1\) e \(\lambda_2\) sue autovalori di \(\rho\) (operatore di densità associato ad un sistema a singolo qubit), con \(\lambda_2 = 1 - \lambda_1\). Allora il determinante di \(\rho\) potrà essere scritto come:
+Siano adesso, \(\lambda_1\) e \(\lambda_2\) due autovalori di \(\rho\) (operatore di densità associato ad un sistema a singolo qubit), con \(\lambda_2 = 1 - \lambda_1\). Allora il determinante di \(\rho\) potrà essere scritto come:
 \begin{gather*}
 \det(\rho) = \lambda_1 \lambda_2 = \lambda_1 (1 - \lambda_1)
 \end{gather*}

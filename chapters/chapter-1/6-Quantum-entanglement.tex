@@ -1,7 +1,7 @@
 \section{Quantum Entanglement}
-La maggior parte degli stati di un sistema ad n-qubit non può essere scritto come il prodotto tensioriale di n qubit singoli, nonostante siano tutte delle combinazioni lineari degli elementi della base del sistema ad n-qubit.
+La maggior parte degli stati di un sistema ad n-qubit non può essere scritto come il prodotto tensoriale di n qubit singoli, nonostante siano tutte delle combinazioni lineari degli elementi della base del sistema ad n-qubit.
 
-Un caso speciale di superposizione di più qubit è quella in cui non posso scrivere lo stato del mio sistema ad n-qubit come il prodotto tensoriale di questi ultimi. Tali stati sono detti stati entranglati (\textbf{entrangled states}).
+Un caso speciale di superposizione di più qubit è quella in cui non posso scrivere lo stato del mio sistema ad n-qubit come il prodotto tensoriale di questi ultimi. Tali stati sono detti stati entanglati (\textbf{entangled states}).
 
 \[
 \ket{\varphi} \ne \ket{u} \otimes \ket{v}, \ket{u},\ket{v} \text{qubits
@@ -34,7 +34,7 @@ Per dimostrare che non sia possibile rappresentare lo stato \(\ket{\Phi^+}\) con
 \begin{bmatrix}
 u_1 v_1 \\
 u_1 v_2 \\
-u_2 v_2 \\
+u_2 v_1 \\
 u_2 v_2
 \end{bmatrix}
 \implies
@@ -85,7 +85,7 @@ Dove \(\mathcal{P}_{00}\) è la probabilità che i due qubit, dopo la misura, si
 
 Questo però vuol dire che se misuro i due qubit lungo lo stesso operatore Z (autovettori della base canonica), allora otterrò lo stesso risultato da entrambe le misure in maniera deterministica, il che dirà che tali qubit sono perfettamente correlati. Misurando lungo altri operatori, considerando sempre lo stato \(\ket{\Phi^+}\), il risultato sarà randomico, ma sempre uguale tra le due misure (se le due misure vengono fatte lungo sempre la stessa base). 
 
-La misura di uno stato entangled, quindi, dipende su quale dei due qubit ho effettuato prima la misura. Il caso in cui le due misure avvengano allo stesso tempo viene escluso, poichè dalla teoria della relatività di Einstein riesco sempre a ricavare una misura che avviene prima di un altra. 
+La misura di uno stato entangled, quindi, dipende su quale dei due qubit ho effettuato prima la misura. Il caso in cui le due misure avvengano allo stesso tempo viene escluso, poiché dalla teoria della relatività di Einstein riesco sempre a ricavare una misura che avviene prima di un'altra. 
 
 Le coppie di particelle entanglate sono anche chiamate \textbf{coppie EPR}(Einstein-Podolsky-Rosen), misurare uno dei due qubit, cambia istantaneamente dell'altro qubit, facendolo collassare.
 
@@ -93,7 +93,7 @@ Le coppie di particelle entanglate sono anche chiamate \textbf{coppie EPR}(Einst
 \textbf{Generazione delle coppie EPR}\\
 Oggi le coppie EPR sono una delle cose da realizzare più challenging. In particolare per il loro utilizzo a lunghe distanze. Più precisamente, una delle metodologie più usate per generare le coppie EPR è l'\textbf{SPDC} (Spontaneous Parametric Down-Conversion) \cite{anwar2021entangled}, tale sistema prevede una pompa (un laser), che viene sparato attraverso un cristallo non lineare, tale fotone ha una piccola probabilità di dividersi in due fotoni ad energia minore detti \textit{signal} ed \textit{idler} (tale processo è tutto interno al cristallo). \cite{pan2012multiphoton}. Quello che permette a tali fotoni di essere entanglati non è l'interazione che c'è tra i due, ma è bensì la legge di conservazione dell'energia e quella di conservazione dell'impulso. Da qui entra poi in gioco quelli che sono gli stati di bell, ovvero il fatto che i due fotoni possono avere polarizzazioni uguali o polarizzazioni ortogonali.
 
-Solitamente, a grandi distanze, si evita generare sempre delle nuove coppie EPR da distribuire, si preferisce partire da due coppie Entanglate, entanglare a sua volta 2 qubit, portandoli in uno stato di bell, per poi misurarli, qesto farà collassare i due entanglement generati precedentemente, facendo entrare, i qubit non misurati, e mai interagenti, in entanglement tra di loro. Questo farà sì di avere solo 2 fotoni entangled, ma ad una "distanza" maggiore. Il circuito a cui si fa riferimento per l'entanglement swapping è quello mostrato nella figura [\ref{img:ent-swapping}]. Tale circuito va letto da sinistra verso desctra considerando l'avanzata verso destra come il tempo, mentre, le linee continue sono i qubit che evolvono, mentre la doppia linea grigia sono dei bit classici che evolvono nel tempo
+Solitamente, a grandi distanze, si evita generare sempre delle nuove coppie EPR da distribuire, si preferisce partire da due coppie Entanglate, entanglare a sua volta 2 qubit, portandoli in uno stato di bell, per poi misurarli, questo farà collassare i due entanglement generati precedentemente, facendo entrare, i qubit non misurati, e mai interagenti, in entanglement tra di loro. Questo farà sì di avere solo 2 fotoni entangled, ma ad una "distanza" maggiore. Il circuito a cui si fa riferimento per l'entanglement swapping è quello mostrato nella figura [\ref{img:ent-swapping}]. Tale circuito va letto da sinistra verso destra considerando l'avanzata verso destra come il tempo, mentre, le linee continue sono i qubit che evolvono, mentre la doppia linea grigia sono dei bit classici che evolvono nel tempo
 \end{info}
 
 \begin{figure}[H]
@@ -103,11 +103,11 @@ Solitamente, a grandi distanze, si evita generare sempre delle nuove coppie EPR 
 \end{figure}
 
 \subsection{Il paradosso dell'Entanglement}
-Da quello che ci siamo detti prima, quindi, si potrebbe pensare che con una coppia di qubit entangled si possa trasferire informazione ad una velocità maggiore di quella della luce, ma questo non è proprio vero. Quando noi misuriamo su di una coppia EPR, il risultato è puramente probabilistico, il che va contro lo stesso significato di \textbf{informazione}, questo perchè il trasmettitore non decide cosa inviare al ricevitore, si avrà solo la certezza di aver misurato entrambi lo stesso stato, ma non che il trasmettitore volesse trasmettere effettivamente quello.
+Da quello che ci siamo detti prima, quindi, si potrebbe pensare che con una coppia di qubit entangled si possa trasferire informazione ad una velocità maggiore di quella della luce, ma questo non è proprio vero. Quando noi misuriamo su di una coppia EPR, il risultato è puramente probabilistico, il che va contro lo stesso significato di \textbf{informazione}, questo perché il trasmettitore non decide cosa inviare al ricevitore, si avrà solo la certezza di aver misurato entrambi lo stesso stato, ma non che il trasmettitore volesse trasmettere effettivamente quello.
 
 \begin{info}
 \textbf{Significato di Condivisione dell'Informazione}\\
-Condividere un informazione vuol dire che il ricevitore può risolvere una sua incertezza rispetto a quello che la sorgente vuole condividere.
+Condividere un'informazione vuol dire che il ricevitore può risolvere una sua incertezza rispetto a quello che la sorgente vuole condividere.
 Questo si ri-collega a quello che abbiamo detto precedentemente, ovvero, che se il mittente non può controllare cosa inviare, allora non si avrà un vero e proprio trasferimento di informazione, o almeno, non ad una velocità superiore a quella della luce
 \end{info}
 
@@ -117,7 +117,7 @@ Il concetto di entanglement è fortemente legato al concetto di "decomposizione"
 \ket{\psi} = \ket{\psi_0} \otimes \ket{\psi_1} \otimes \ket{\psi_3} \otimes \dots 
 \]
 
-Quindi come il prodotto tensoriale dei vari qubit appartenenti al mio sistema. Se vado a considerare i qubit accoappiati in coppie entangled, posso vederli come degli unici sistemi, potento poi ri-scrivere lo stato come:
+Quindi come il prodotto tensoriale dei vari qubit appartenenti al mio sistema. Se vado a considerare i qubit accoppiati in coppie entangled, posso vederli come degli unici sistemi, potendo poi ri-scrivere lo stato come:
 \[
 \ket{\psi} = \ket{wA} \otimes \ket{wB} \otimes \dots
 \]
@@ -126,4 +126,4 @@ Dove \(\ket{wA}\) è l'entanglement tra 2 Qubit del sistema e \(\ket{wB}\) l'ent
 
 Se guardassi il sistema in questo modo, potrei comunque esprimerlo come il prodotto vettoriale di tutte le coppie entanglate tra di loro. Nonostante questo, il sistema non sarebbe esprimibile come un prodotto tensoriale di tutti i qubit tra di loro. 
 
-Questo discorso è importante per la definizione stessa che abbiamo dato di sistema in entanglement. Fino ad ora, se consideravamo due qubit il sistema risultava in entanglement perchè non potevo esprimerlo come prodotto tensoriale di due stati differenti, nel caso ad n-qubit, invece, dipende dal punto di vista. Se faccio un \textbf{clustering} rispetto ai singoli sistemi che sono in entanglement (come abbiamo fatto precedentemente considerando i due sistemi a 2 qubit come due sistemi separati e non entanglati tra di loro), allora posso esprimere lo stato del mio sistema come un prodotto vettoriale di questi ultimi. Quindi lo stato di entanglement di un sistema dipende anche in base a cosa voglio osservare ed agli entanglement "locali" tra i diversi qubit. 
+Questo discorso è importante per la definizione stessa che abbiamo dato di sistema in entanglement. Fino ad ora, se consideravamo due qubit il sistema risultava in entanglement perché non potevo esprimerlo come prodotto tensoriale di due stati differenti, nel caso ad n-qubit, invece, dipende dal punto di vista. Se faccio un \textbf{clustering} rispetto ai singoli sistemi che sono in entanglement (come abbiamo fatto precedentemente considerando i due sistemi a 2 qubit come due sistemi separati e non entanglati tra di loro), allora posso esprimere lo stato del mio sistema come un prodotto vettoriale di questi ultimi. Quindi lo stato di entanglement di un sistema dipende anche in base a cosa voglio osservare ed agli entanglement "locali" tra i diversi qubit. 

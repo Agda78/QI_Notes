@@ -1,11 +1,11 @@
 \section{Trasformazioni di stato quantistiche}
-Le trasformazioni di un sistema quantistico è descritta dall'equazione di Shroudinger (o quarto postulato della meccanica quatistica, questo dipende molto dal testo di riferimento, nel mio caso ho utilizzato le seguenti dispense \cite{giliberti2007limite}):
+Le trasformazioni di un sistema quantistico è descritta dall'equazione di Schrödinger (o quarto postulato della meccanica quantistica, questo dipende molto dal testo di riferimento, nel mio caso ho utilizzato le seguenti dispense \cite{giliberti2007limite}):
 \[
 \hat{H} \ket{\psi(t)} = i \hbar \frac{\partial}{\partial t} \ket{\psi(t)}
 \]
 
 Senza spaventarsi, i vettori \(\ket{\psi(t)}\) sono i vettori di stato a valori variabili nel tempo. Questo però andrebbe ad introdurre una variabilità di tutti i valori all'interno del vettore a tempo continuo. Nel nostro caso, la dipendenza dal tempo decade, questo è dovuto principalmente al fatto che ci troviamo in un sistema chiuso (o isolato). Data tale condizione, quindi, vedremo il vettore \(\ket{\psi(t)} = \ket{\psi}\).
-Le evoluzioni, quindi, di uno stato quantistico dipendono dall'operatore che stiamo andando a considerare. L'equazione di Shroundinger, anche in questo caso, ci dice che l'evoluzione dello stato di un sistema quantistico è descritta dall'operatore \(\hat{H}\), tale matrice è una matrice \textbf{Hermitiana}.
+Le evoluzioni, quindi, di uno stato quantistico dipendono dall'operatore che stiamo andando a considerare. L'equazione di Schrödinger, anche in questo caso, ci dice che l'evoluzione dello stato di un sistema quantistico è descritta dall'operatore \(\hat{H}\), tale matrice è una matrice \textbf{Hermitiana}.
 Un operatore che viene descritto da una matrice Hermitiana è detto operatore \textbf{autoaggiunto}. Questo, confrontato con gli spazi vettoriali reali è equivalente alla proprietà di matrice simmetrica, con la variazione che, essendo i valori complessi, la matrice non è più solo trasposta, ma anche coniugata. Tale proprietà permette anche di dire che una gate quantistica è \textbf{reversibile}.
 
 \begin{info}
@@ -34,9 +34,9 @@ Dalla precedenti considerazioni, quindi, considerando uno stato quantistico di u
 \ket{\psi}_o = U \ket{\psi}_i
 \]
 
-Per ricavare e realizzare le gate, quindi, tale vincolo mostra una possibil soluzione per l'Hemiltoniano.
+Per ricavare e realizzare le gate, quindi, tale vincolo mostra una possibile soluzione per l'Hamiltoniano.
 
-Per andare a risolvere l'equazione di Shroudinger, consideriamo il caso in cui l'Hermitiano \(\hat{H}\) non dipenda dal tempo (dato dal fatto che il sistema sia isolato). Se consideriamo l'equazione di Shroudinger, avremo che:
+Per andare a risolvere l'equazione di Schrödinger, consideriamo il caso in cui l'Hermitiano \(\hat{H}\) non dipenda dal tempo (dato dal fatto che il sistema sia isolato). Se consideriamo l'equazione di Schrödinger, avremo che:
 \[
 i \hbar \frac{\partial}{\partial t} \ket{\phi(t)} = H \ket{\phi(t)}
 \]
@@ -65,11 +65,11 @@ log(\frac{x(t)}{x(t_0)}) = c (t - t_0)
 \]
 
 \[
-x(t)=e^{c(t-t0)}x(t_0)
+x(t)=e^{c(t-t_0)}x(t_0)
 \]
 \end{info}
 
-Da tale considerazione viene fuori che la soluzione dell'equazione di Shrudinger, nel caso di \(H\) non dipendente dal tempo, sarà:
+Da tale considerazione viene fuori che la soluzione dell'equazione di Schrödinger, nel caso di \(H\) non dipendente dal tempo, sarà:
 \[
 \ket{\phi(t)} = e^{-\frac{i}{\hbar} H (t-t_0)}\ket{\phi(t_0)}
 \]
@@ -103,7 +103,7 @@ Questo è il "secondo metodo", per calcolare l'esponenziale di una matrice nel c
 
 Queste operazioni, che sembrano semplici, nel caso di sistemi a singolo qubit, divergono nel caso a 2 qubit. Tali rappresentazioni sono importanti quando si vuole andare a realizzare quelle che saranno le \textbf{Gate}, per cui un Qubit dovrà passare per essere "processato".
 
-Quindi la soluzione dell'equazione di Shroudinger serve a capire quello che è il legame tra la computazione quantistica logica e quella reale. 
+Quindi la soluzione dell'equazione di Schrödinger serve a capire quello che è il legame tra la computazione quantistica logica e quella reale. 
 
 Per comprendere al meglio tale cosa, facciamo un esempio.
 In \textbf{Quantum Computing} esiste la gate \(X\), tale gate funziona da not quantistico, ovvero, fa in modo che, dato un elemento della base canonica, si avrà:
@@ -209,7 +209,7 @@ i & 0
 \end{itemize}
 
 \subsection{Teorema del No-Cloning}
-Uno stato quantistico arbitrario non può essere copiato, questa è una conseguenza della linearità delle trasformazioni unitarie. Posso preparare anche dei qubit che siano simili, ma questo non giustifica in alcun modo l'esistenza di una porta unitaria che permetta di effettuare il cloning di un bit. Questa è una delle principali differenze rispetto al mondo classico, dove le indormazioni possono essere copiate in continuazione tra le diverse parti del sistema. 
+Uno stato quantistico arbitrario non può essere copiato, questa è una conseguenza della linearità delle trasformazioni unitarie. Posso preparare anche dei qubit che siano simili, ma questo non giustifica in alcun modo l'esistenza di una porta unitaria che permetta di effettuare il cloning di un bit. Questa è una delle principali differenze rispetto al mondo classico, dove le informazioni possono essere copiate in continuazione tra le diverse parti del sistema. 
 
 Attenzione, questo non vuol dire che non possa preparare uno stato quantistico già dall'inizio, posso imporre ad uno stato di trovarsi in un vettore ortogonale noto (come ad esempio \(\ket{0}\) o \(\ket{1}\)). 
 

@@ -1,12 +1,12 @@
 \section{Misurazione di un Qubit}
-Finchè un qubit rimane in una sua superposizione, non vi è possibile accedere alle informazioni. Per farlo bisognerà "misurarlo". Il postulato che governa la misura di un qubit è il secondo postulato della meccanica quantistica. Tale postulato ci permette di dire che quando si va ad effettuare una misurazione su di un qubit è importante capire che tipo di misurazione si sta andando a fare. Se si misura andando a considerare quella che è la base canonica del circuito, allora il risultato sarà o \(\ket{0}\) o \(\ket{1}\). Non è possibile accedere all'informazione di \(\alpha\) o \(\beta\). Queste sono solo delle probabilità per cui il sistema potrà trovarsi in un autospazio o nell'altro. Se misurassimo con un dispositivo che fa riferimento, invece, alla base di Hadamard, allora i possibili risultati sarebbero \(\ket{+}\) e \(\ket{-}\). 
+Finché un qubit rimane in una sua superposizione, non vi è possibile accedere alle informazioni. Per farlo bisognerà "misurarlo". Il postulato che governa la misura di un qubit è il secondo postulato della meccanica quantistica. Tale postulato ci permette di dire che quando si va ad effettuare una misurazione su di un qubit è importante capire che tipo di misurazione si sta andando a fare. Se si misura andando a considerare quella che è la base canonica del circuito, allora il risultato sarà o \(\ket{0}\) o \(\ket{1}\). Non è possibile accedere all'informazione di \(\alpha\) o \(\beta\). Queste sono solo delle probabilità per cui il sistema potrà trovarsi in un autospazio o nell'altro. Se misurassimo con un dispositivo che fa riferimento, invece, alla base di Hadamard, allora i possibili risultati sarebbero \(\ket{+}\) e \(\ket{-}\). 
 
-Quindi lo stato di un qubit collassa sul uno dei vettori ortogonali di riferimento, utilizzati per la misura, con probabilità definite dai coefficenti del qubit stesso.
+Quindi lo stato di un qubit collassa su uno dei vettori ortogonali di riferimento, utilizzati per la misura, con probabilità definite dai coefficienti del qubit stesso.
 Dopo la misurazione, il qubit collassato, non porterà ulteriore informazione rispetto al passato, quindi altre misurazioni, dopo la prima, daranno sempre lo stesso risultato. Il Qubit, quindi, "collasserà in un bit".
 
-La misura avviene lungo uno specifico operatore. Gli operatori sono le matrici di Pauli. Sì dice cos', poichè gli autovettori associati alle matrici di pauli, costituiranno la base in cui il qubit potrà collassare.
+La misura avviene lungo uno specifico operatore. Gli operatori sono le matrici di Pauli. Si dice così, poiché gli autovettori associati alle matrici di pauli, costituiranno la base in cui il qubit potrà collassare.
 
-Questo perchè ad ogni grandezza fisica osservabile, corrisponde un operatore autoaggiunto il cui spettro costituisce l'insieme dei possibili valori che potranno essere ottenuti dalla misura di tale grandezza.
+Questo perché ad ogni grandezza fisica osservabile, corrisponde un operatore autoaggiunto il cui spettro costituisce l'insieme dei possibili valori che potranno essere ottenuti dalla misura di tale grandezza.
 
 Questo per dire che la superposizione non solo dipende dalla base di interpretazione, ma anche dall'operatore su di cui si andrà ad effettuare la misurazione.
 
@@ -41,7 +41,7 @@ H \ket{\varphi} = \frac{1}{\sqrt{2}}
 
 Se noi misurassimo tale qubit sull'operatore \(Z\), quindi sulla base canonica, allora avremmo che esso potrà collassare con una probabilità del \(50 \%\), sia in \(\ket{0}\) sia in \(\ket{1}\). Mentre se lo misurassimo lungo l'operatore \(X\), quindi con la base di Hadamard, allora,  si otterrebbe direttamente lo stato \(\ket{+}\).
 
-Quindi la superposizione è dipendente dalla base, poichè, con la misurazione in alcune basi, si otterrebbe un risultato deterministico, mentre in altre si otterrebbe un risultato probabilistico (tale affermazione è alla base del funzionamento del sistema QKD).
+Quindi la superposizione è dipendente dalla base, poiché, con la misurazione in alcune basi, si otterrebbe un risultato deterministico, mentre in altre si otterrebbe un risultato probabilistico (tale affermazione è alla base del funzionamento del sistema QKD).
 
 Quindi, generalizzando anche ai casi multi-qubit. Un sistema multi-qubit, quando misurato, può cadere in una delle sue \(2^n\) possibili vettori della base. Pertanto si formalizza quello che è il terzo postulato della meccanica quantistica:
 
@@ -57,7 +57,7 @@ Dalla precedente regola, quindi, è possibile andare a definire la somma di tutt
 \sum_{d}^{n=1}p(n | \ket{\psi}) = \sum_{d}^{n=1}|\braket{\psi_n | \psi}|^2 = \braket{\psi | \psi} = 1
 \]
 
-Questo dimostra anche che se ci fosse una fase globale, questa non modificherebbe in alcun modo le probabilità associate ai singoli vettori della base. Quindi anche se due stati diversi, hanno tutte le probaiblità uguali, allora essi saranno due stati che differiscono della sola fase globale.
+Questo dimostra anche che se ci fosse una fase globale, questa non modificherebbe in alcun modo le probabilità associate ai singoli vettori della base. Quindi anche se due stati diversi, hanno tutte le probabilità uguali, allora essi saranno due stati che differiscono della sola fase globale.
 
 \subsection{L'esperimento di Dirac}
 La luce è costituita da \textbf{fotoni}, ed è l'unico tipo di particella a cui i nostri occhi sono sensibili.
@@ -98,7 +98,7 @@ Andando a considerare il fotone mappato su \(\ket{\varphi}\), con polarizzazione
 \]
 Quindi, tale fotone, passerà per il filtro A con probabilità \(cos^2(\Theta)\).
 
-Quindi la proiezione lungo \(\ket{\uparrow}\) funge da misuratore e l'uscita sarà pari a \(\ket{\varphi}_A = \ket{\uparrow}\). Andando ad utilizzare poi il filtro C che fa passare solo quei fotoni che, osservati, saranno \(\ket{\rightarrow}\), dato che dopo il filtro A passeranno solo, o fotoni nulli, o fotoni \(\ket{\uparrow}\), allora all'uscita del filtro C, usciranno tutte rappresentazioni nulle. Questo poichè la probabilità, dopo il filtro A, d' avere un fotone che collassa in \(\ket{\rightarrow}\) è del tutto nulla \(|\alpha_1|^2=0\). Questo spiega anche matematicamente quello che succede. 
+Quindi la proiezione lungo \(\ket{\uparrow}\) funge da misuratore e l'uscita sarà pari a \(\ket{\varphi}_A = \ket{\uparrow}\). Andando ad utilizzare poi il filtro C che fa passare solo quei fotoni che, osservati, saranno \(\ket{\rightarrow}\), dato che dopo il filtro A passeranno solo, o fotoni nulli, o fotoni \(\ket{\uparrow}\), allora all'uscita del filtro C, usciranno tutte rappresentazioni nulle. Questo poiché la probabilità, dopo il filtro A, d'avere un fotone che collassa in \(\ket{\rightarrow}\) è del tutto nulla \(|\alpha_1|^2=0\). Questo spiega anche matematicamente quello che succede. 
 
 Inserendo il filtro B, tra C ed A, esso permetterà di misurare il fotone facendolo collassare in uno stato che possa essere \(\ket{\nearrow}\) o \(\ket{\nwarrow}\), facendo passare solo le componenti \(\ket{\nearrow}\). Tale stato, guardandolo sulla base delle polarizzazioni \(\ket{\uparrow}\) e \(\ket{\rightarrow}\), si otterrebbe il seguente stato:
 \[
@@ -127,7 +127,7 @@ Considerando il nuovo spazio di Hilbert generato dal prodotto vettoriale dei due
 \alpha_{ij} \in \mathbb{C}, \sum_{i,j}|\alpha_{ij}|^2=1
 \]
 
-Se vado a misurare tutto il sistema, allora, come per il singolo qubit, potrò avere una dei 4 possibili elementi in uscita. La probabilità di ogni elemento è data dalla norma quadra degli specifici coefficenti (\(\mathcal{P}_{00} = |\alpha_{00}|^2\)). Il caso interessante è quello in cui vada a misurare un singolo qubit della coppia. In questo caso si ottiene la seguente casistica:
+Se vado a misurare tutto il sistema, allora, come per il singolo qubit, potrò avere una dei 4 possibili elementi in uscita. La probabilità di ogni elemento è data dalla norma quadra degli specifici coefficienti (\(\mathcal{P}_{00} = |\alpha_{00}|^2\)). Il caso interessante è quello in cui vada a misurare un singolo qubit della coppia. In questo caso si ottiene la seguente casistica:
 \[
 \mathcal{P}_0 = |\alpha_{00}|^2 + |\alpha_{01}|^2
 \]
